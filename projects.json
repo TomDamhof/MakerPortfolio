@@ -1,17 +1,10 @@
 [
   {
-    "file": "projects/project_test.html",
+    "file": "CustomEncolosure.html",
     "title": "Custom Enclosure",
     "tag": "3D Printing",
     "description": "Een op maat ontworpen behuizing voor elektronische projecten. FDM geprint in PETG, parametrisch ontworpen in Fusion 360.",
     "thumb": "images/custom-enclosure-thumb.jpg",
-    "year": "2025"
-  },{
-    "file": "test.html",
-    "title": "test",
-    "tag": "test",
-    "description": "test Een op maat ontworpen behuizing voor elektronische projecten. FDM geprint in PETG, parametrisch ontworpen in Fusion 360.",
-    "thumb": "",
     "year": "2025"
   }
 ]
