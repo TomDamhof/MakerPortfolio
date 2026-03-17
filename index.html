@@ -64,7 +64,13 @@
 
     /* loading state */
     .projects-loading{grid-column:1/-1;padding:3rem;text-align:center;color:rgba(255,255,255,.3);font-size:.8rem;letter-spacing:.08em}
-
+    
+    /* FILTER */
+    .filter-bar{margin-bottom:2rem}
+    .filter-select{appearance:none;background:rgba(255,255,255,.06);color:var(--bg);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:.65rem 2.8rem .65rem 1rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:none;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center}
+    .filter-select:focus{outline:none;border-color:rgba(255,255,255,.3)}
+    .filter-select option{background:#111110;color:#f9f8f6}
+    
     .project-card{background:var(--fg);padding:2.4rem;position:relative;overflow:hidden;transition:background .3s;cursor:none;text-decoration:none;color:inherit;display:block}
     .project-card:hover{background:#1b1b1a}
     .project-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
@@ -227,6 +233,11 @@
       </div>
       <span class="project-count" id="projCount">— projecten</span>
     </div>
+      <div class="filter-bar">
+        <select class="filter-select" id="filterSelect" onchange="filterProjects()">
+          <option value="" data-nl="Alle categorieën" data-en="All categories">Alle categorieën</option>
+        </select>
+      </div>
     <div class="projects-grid" id="projectsGrid">
       <div class="projects-loading">Projecten laden...</div>
     </div>
