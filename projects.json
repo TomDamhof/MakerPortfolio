@@ -1,26 +1,10 @@
 [
   {
-    "file": "projects/custom-enclosure.html",
+    "file": "projects/project_test.html",
     "title": "Custom Enclosure",
     "tag": "3D Printing",
     "description": "Een op maat ontworpen behuizing voor elektronische projecten. FDM geprint in PETG, parametrisch ontworpen in Fusion 360.",
     "thumb": "images/custom-enclosure-thumb.jpg",
     "year": "2025"
-  },
-  {
-    "file": "projects/arduino-sensorstation.html",
-    "title": "Arduino Sensorstation",
-    "tag": "Electronics",
-    "description": "Zelfgebouwd weerstation met ESP32, meerdere sensoren en een live dashboard. Data draadloos via WiFi.",
-    "thumb": "",
-    "year": "2025"
-  },
-  {
-    "file": "projects/maker-vlog-serie.html",
-    "title": "Maker Vlog Serie",
-    "tag": "Video",
-    "description": "Een doorlopende videoserie over het bouwen van projecten — van idee tot eindresultaat.",
-    "thumb": "",
-    "year": "2024"
   }
 ]
