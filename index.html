@@ -291,71 +291,110 @@
   // Cursor
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
-  function addCursorHover(el){ el.addEventListener('mouseenter',()=>cursor.classList.add('big')); el.addEventListener('mouseleave',()=>cursor.classList.remove('big')); }
-  document.querySelectorAll('a,button').forEach(addCursorHover);
+  function addHover(el){ el.addEventListener('mouseenter',()=>cursor.classList.add('big')); el.addEventListener('mouseleave',()=>cursor.classList.remove('big')); }
+  document.querySelectorAll('a, button, select').forEach(addHover);
 
   // Scroll reveal
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach((entry,i)=>{ if(entry.isIntersecting){ entry.target.style.transitionDelay=(i%3)*.1+'s'; entry.target.classList.add('visible'); obs.unobserve(entry.target); } });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((entry,i) => {
+      if(entry.isIntersecting){
+        entry.target.style.transitionDelay = (i%3)*.1+'s';
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // Load projects from projects.json
   let currentLang = 'nl';
-  let projectsData = [];
+  let allProjects = [];
+  let activeFilter = '';
 
-  async function loadProjects() {
+  async function loadProjects(){
     const grid = document.getElementById('projectsGrid');
     try {
       const res = await fetch('projects.json');
-      if (!res.ok) throw new Error('not found');
-      projectsData = await res.json();
+      if(!res.ok) throw new Error();
+      allProjects = await res.json();
+      buildFilterDropdown();
       renderProjects();
     } catch(e) {
-      grid.innerHTML = '<div class="projects-loading" style="color:rgba(255,255,255,.25)">Voeg projecten toe aan projects.json om ze hier te zien.</div>';
+      grid.innerHTML = '<div class="projects-loading">Voeg projecten toe aan projects.json om ze hier te zien.</div>';
     }
   }
 
-  function renderProjects() {
+  function buildFilterDropdown(){
+    const tagSet = new Set();
+    allProjects.forEach(p => {
+      const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
+      tags.forEach(t => tagSet.add(t.trim()));
+    });
+    const select = document.getElementById('filterSelect');
+    while(select.options.length > 1) select.remove(1);
+    [...tagSet].sort().forEach(tag => {
+      const opt = document.createElement('option');
+      opt.value = tag;
+      opt.textContent = tag;
+      select.appendChild(opt);
+    });
+    addHover(select);
+  }
+
+  function filterProjects(){
+    activeFilter = document.getElementById('filterSelect').value;
+    renderProjects();
+  }
+
+  function renderProjects(){
     const grid = document.getElementById('projectsGrid');
-    const count = document.getElementById('projCount');
-    const n = projectsData.length;
-    count.textContent = String(n).padStart(2,'0') + (currentLang==='nl' ? (n===1?' project':' projecten') : (n===1?' project':' projects'));
-    count.setAttribute('data-nl', String(n).padStart(2,'0') + (n===1?' project':' projecten'));
-    count.setAttribute('data-en', String(n).padStart(2,'0') + (n===1?' project':' projects'));
+    const countEl = document.getElementById('projCount');
 
-    if (n === 0) {
-      grid.innerHTML = '<div class="projects-loading">Geen projecten gevonden in projects.json</div>';
-      return;
-    }
+    const filtered = activeFilter
+      ? allProjects.filter(p => {
+          const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
+          return tags.map(t=>t.trim()).includes(activeFilter);
+        })
+      : allProjects;
 
-    grid.innerHTML = projectsData.map((p,i) => {
+    const n = filtered.length;
+    const countNl = String(n).padStart(2,'0') + (n===1?' project':' projecten');
+    const countEn = String(n).padStart(2,'0') + (n===1?' project':' projects');
+    countEl.textContent = currentLang==='nl' ? countNl : countEn;
+    countEl.setAttribute('data-nl', countNl);
+    countEl.setAttribute('data-en', countEn);
+
+    if(n===0){ grid.innerHTML='<div class="projects-loading">Geen projecten gevonden.</div>'; return; }
+
+    grid.innerHTML = filtered.map(p => {
+      const desc = (currentLang==='en' && p.description_en) ? p.description_en : p.description;
+      const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
+      const tagHtml = tags.join(' · ');
       const thumb = p.thumb
         ? `<img src="${p.thumb}" alt="${p.title}" class="card-thumb" onerror="this.outerHTML='<div class=\\'card-thumb-placeholder\\'>NO IMAGE</div>'">`
         : `<div class="card-thumb-placeholder">NO IMAGE</div>`;
-      const desc = currentLang==='en' && p.description_en ? p.description_en : p.description;
       return `
         <a href="${p.file}" class="project-card reveal">
           ${thumb}
-          <div class="card-tag">${p.tag}</div>
+          <div class="card-tag">${tagHtml}</div>
           <div class="card-title">${p.title}</div>
           <div class="card-desc">${desc}</div>
-          <div class="card-year">${p.year || ''}</div>
+          <div class="card-year">${p.year||''}</div>
           <span class="card-arrow">↗</span>
         </a>`;
     }).join('');
 
-    document.querySelectorAll('.project-card').forEach(addCursorHover);
+    document.querySelectorAll('.project-card').forEach(addHover);
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   }
 
   loadProjects();
 
-  // Language toggle
-  function toggleLang() {
+  function toggleLang(){
     currentLang = currentLang==='nl' ? 'en' : 'nl';
     document.getElementById('langLabel').textContent = currentLang==='nl' ? 'EN' : 'NL';
     document.documentElement.lang = currentLang;
+    const allOpt = document.querySelector('#filterSelect option[value=""]');
+    if(allOpt) allOpt.textContent = currentLang==='nl' ? 'Alle categorieën' : 'All categories';
     document.querySelectorAll('[data-nl]').forEach(el=>{
       const txt = el.getAttribute('data-'+currentLang);
       if(txt) el.innerHTML = txt;
