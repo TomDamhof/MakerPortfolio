@@ -1,7 +1,7 @@
 [
   {
-    "file": "projects/template.html?id=project-1",
     "id": "project-1",
+    "file": "projects/template.html?id=project-1",
     "title": { "nl": "Mijn Project", "en": "My Project" },
     "description": { "nl": "Beschrijving", "en": "Description" },
     "categorie": { "nl": "3D Printing", "en": "3D Printing" },
