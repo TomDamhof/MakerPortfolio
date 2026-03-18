@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project — Tom Damhof</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono&display=swap" rel="stylesheet"/>
+
+  <style>
+    body{
+      margin:0;
+      background:#f9f8f6;
+      font-family:'DM Mono',monospace;
+      color:#111;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:4rem 2rem;
+    }
+
+    h1{
+      font-family:'DM Serif Display',serif;
+      font-size:3rem;
+      margin-bottom:1rem;
+    }
+
+    .meta{
+      display:flex;
+      gap:1rem;
+      margin-bottom:2rem;
+      color:#888;
+    }
+
+    .tags span{
+      background:#111;
+      color:#fff;
+      padding:.2rem .6rem;
+      margin:.2rem;
+      display:inline-block;
+      font-size:.7rem;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:1rem;
+      margin:2rem 0;
+    }
+
+    .gallery img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .sidebar{
+      margin-top:3rem;
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:3rem;
+    }
+
+    .label{
+      font-size:.7rem;
+      color:#888;
+      text-transform:uppercase;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <h1 class="project-title"></h1>
+
+  <div class="meta">
+    <span class="project-year"></span>
+    <span class="project-category"></span>
+  </div>
+
+  <p class="project-description"></p>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <img id="img-main"/>
+    <div>
+      <img id="img-2"/>
+      <img id="img-3"/>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="sidebar">
+
+    <div>
+      <div class="label">Aanpak</div>
+      <ul class="aanpak-list"></ul>
+    </div>
+
+    <div>
+
+      <div class="label">Materialen</div>
+      <div class="tags" id="materials"></div>
+
+      <div class="label" style="margin-top:1rem;">Status</div>
+      <div class="project-status"></div>
+
+      <div class="label" style="margin-top:1rem;">Jaar</div>
+      <div class="project-year-value"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+let lang = 'nl';
+
+function getProjectId(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
+
+async function loadProject(){
+  const res = await fetch('../projects.json');
+  const data = await res.json();
+
+  const id = getProjectId();
+  const project = data.find(p => p.id === id);
+
+  if(!project) return;
+
+  renderProject(project);
+}
+
+function renderProject(project){
+
+  // TITLE
+  document.querySelector('.project-title').textContent = project.title[lang];
+
+  // DESC
+  document.querySelector('.project-description').textContent = project.description[lang];
+
+  // YEAR
+  document.querySelector('.project-year').textContent = project.year;
+  document.querySelector('.project-year-value').textContent = project.year;
+
+  // CATEGORY
+  document.querySelector('.project-category').textContent = project.categorie[lang];
+
+  // STATUS
+  document.querySelector('.project-status').textContent = project.status[lang];
+
+  // TAGS
+  const mat = document.getElementById('materials');
+  mat.innerHTML = '';
+  project.tags.forEach(t=>{
+    const el = document.createElement('span');
+    el.textContent = t;
+    mat.appendChild(el);
+  });
+
+  // AANPAK
+  const list = document.querySelector('.aanpak-list');
+  list.innerHTML = '';
+  project.aanpak[lang].forEach(step=>{
+    const li = document.createElement('li');
+    li.textContent = step;
+    list.appendChild(li);
+  });
+
+  // IMAGES
+  if(project.images.length){
+    document.getElementById('img-main').src = '../'+project.images[0];
+    if(project.images[1]) document.getElementById('img-2').src = '../'+project.images[1];
+    if(project.images[2]) document.getElementById('img-3').src = '../'+project.images[2];
+  }
+}
+
+loadProject();
+</script>
+
+</body>
+</html>
