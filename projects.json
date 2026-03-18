@@ -1,13 +1,3 @@
-// 1. verander de 'id' naar het proiekt naam.
-// 2. verander in file de id=project-...
-// 3. verander de title
-// 4. verander description 
-// 5. geef hem in de juiste categorie (hooft catgorie)
-//    Zoals: Electronics, Video, 3D Print,
-// 6. juiste status tags (materialen & tools) waar op gefiltert kan worden.
-//    Zoals: Electronics, 3D cad, 3D print, Soldering, Video
-// 7. 
-
 [
   {
     "id": "Subscriber Counter",
