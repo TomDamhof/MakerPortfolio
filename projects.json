@@ -40,6 +40,13 @@
       ]
     },
     "tags": ["3D cad", "Electronics", "Arduino", "Code", "Video"],
+    "links": {
+      "youtube": "https://youtube.com/@toomuchesp",
+      "makerworld": "https://makerworld.com/@TooMuchESP",
+      "github": "https://github.com/TomDamhof/project",
+      "instagram": "https://instagram.com/toomuchesp",
+      "printables": "https://www.printables.com/user/tomdamhof"
+    }
     "year": "2024",
     "thumb": "images/custom-enclosure-thumb.jpg",
     "images": [
@@ -83,6 +90,13 @@
       ]
     },
     "tags": ["Arduino", "Electronics", "C++"],
+    "links": {
+      "youtube": "https://youtube.com/@toomuchesp",
+      "makerworld": "https://makerworld.com/@TooMuchESP",
+      "github": "https://github.com/TomDamhof/project",
+      "instagram": "https://instagram.com/toomuchesp",
+      "printables": "https://www.printables.com/user/tomdamhof"
+    }
     "year": "2025",
     "thumb": "images/led-controller-thumb.jpg",
     "images": [
