@@ -72,6 +72,9 @@
       "nl": "Een Arduino-gebaseerde controller voor adresseerbare LED strips met app besturing.",
       "en": "An Arduino-based controller for addressable LED strips with app control."
     },
+    "about": {"nl": "Een live-updatende YouTube-abonnees- en weergaveteller die automatisch de helderheid aanpast aan de omgeving.",
+    "en": "A live-updating YouTube subscriber and view counter that automatically adjusts its brightness to the surroundings."
+    },
     "categorie": {
       "nl": "Electronics",
       "en": "Electronics"
