@@ -392,19 +392,9 @@
       linksBlock.style.display = 'block';
       linksContainer.innerHTML = '';
       
-      const linkLabels = {
-        'youtube': '▶ YouTube',
-        'makerworld': '🔧 MakerWorld',
-        'github': '⚙ GitHub',
-        'instagram': '📷 Instagram',
-        'twitter': '𝕏 Twitter',
-        'website': '🌐 Website',
-        'thingiverse': '⊡ Thingiverse',
-        'printables': '⊡ Printables'
-      };
       
       Object.entries(project.links).forEach(([key, url]) => {
-        const label = linkLabels[key] || key.charAt(0).toUpperCase() + key.slice(1);
+        const label = key || key.charAt(0).toUpperCase() + key.slice(1);
         const a = document.createElement('a');
         a.href = url;
         a.target = '_blank';
