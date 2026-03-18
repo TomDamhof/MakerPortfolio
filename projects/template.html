@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <!--
   ╔══════════════════════════════════════════════════════════════╗
-  ║  TOM DAMHOF — PROJECT TEMPLATE (DYNAMIC)                    ║
-  ║  Data wordt automatisch uit projects.json geladen            ║
+  ║  TOM DAMHOF — PROJECT TEMPLATE                              ║
+  ║  Automatische JSON data loading                              ║
   ║                                                              ║
   ║  HOE GEBRUIK JE DIT BESTAND?                                ║
-  ║  1. Kopieer dit bestand naar /projects/jouw-project.html    ║
-  ║  2. Voeg je project toe aan projects.json met volgende data:║
-  ║     - id, title, description, year, categorie (nl/en),      ║
-  ║     - tags (array), images (array), status (nl/en)          ║
+  ║  1. Kopieer dit bestand naar /projects/template.html         ║
+  ║  2. Open met: ?id=project-1                                  ║
   ║  3. Zet je foto's in de /images/ map                         ║
-  ║  4. Klaar! Data wordt automatisch geladen                    ║
+  ║  4. Voeg je project toe aan projects.json met ID             ║
+  ║  5. Klaar! Data wordt automatisch geladen uit projects.json  ║
   ╚══════════════════════════════════════════════════════════════╝
 -->
 <html lang="nl">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Project — Tom Damhof</title>
+
+  <title>Project Naam — Tom Damhof</title>
 
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
@@ -50,7 +50,7 @@
     .project-title em{font-style:italic;color:var(--accent)}
     .project-summary{color:var(--muted);font-size:.9rem;max-width:65ch;margin-bottom:1rem;line-height:1.85}
 
-    /* HERO IMAGE */
+    /* HERO IMAGE (optioneel grote afbeelding bovenaan) */
     .hero-image-wrap{max-width:1200px;margin:0 auto;padding:0 3rem 4rem}
     .hero-image-wrap img{width:100%;max-height:560px;object-fit:cover;border-radius:12px;display:block}
 
@@ -58,7 +58,7 @@
     .gallery-section{max-width:1200px;margin:0 auto;padding:0 3rem 5rem}
     .section-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem;display:block}
 
-    /* Layout A: 1 grote + 2 kleine */
+    /* Layout A: 1 grote + 2 kleine naast elkaar */
     .gallery-a{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:1rem;margin-bottom:1rem}
     .gallery-a .main{grid-row:1/3}
     .gallery-a img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s}
@@ -71,14 +71,18 @@
     .gallery-b img{width:100%;height:220px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s}
     .gallery-b img:hover{opacity:.9}
 
-    /* Layout C: 1 brede */
+    /* Layout C: 1 brede afbeelding */
     .gallery-c{margin-bottom:1rem}
     .gallery-c img{width:100%;max-height:480px;object-fit:cover;border-radius:8px;display:block}
 
-    /* Layout D: 2 kolommen */
+    /* Layout D: 2 gelijke kolommen */
     .gallery-d{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
     .gallery-d img{width:100%;height:280px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s}
     .gallery-d img:hover{opacity:.9}
+
+    /* VIDEO EMBED */
+    .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-bottom:1rem}
+    .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 
     /* PROJECT INFO */
     .project-info{max-width:1200px;margin:0 auto;padding:0 3rem 7rem;display:grid;grid-template-columns:2fr 1fr;gap:5rem;border-top:1px solid var(--border);padding-top:4rem}
@@ -88,10 +92,11 @@
     .info-body p{margin-bottom:.9rem}
     .info-body ul{padding-left:1.2rem;margin-bottom:.9rem}
     .info-body ul li{margin-bottom:.4rem}
+    .info-sidebar{}
     .sidebar-block{margin-bottom:2rem}
     .sidebar-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
     .sidebar-value{font-size:.84rem;color:var(--fg);line-height:1.7}
-    .sidebar-tag{display:inline-block;background:var(--fg);color:var(--bg);font-size:.68rem;padding:.2rem .65rem;border-radius:4px;margin:.2rem .2rem .2rem 0;letter-spacing:.06em}
+    .sidebar-tag{display:inline-block;background:var(--fg);color:var(--bg);font-size:.68rem;padding:.2rem .65rem;border-radius:4px;margin:.2rem .2rem 0 0;letter-spacing:.06em}
 
     /* FOOTER */
     footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between}
@@ -132,89 +137,102 @@
   <a href="../index.html" class="nav-logo">Tom <span>Damhof</span></a>
   <a href="../index.html#projects" class="back-link">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-    <span>Back to projects / Terug naar projecten</span>
+    <span data-nl="Terug naar projecten" data-en="Back to projects">Terug naar projecten</span>
   </a>
 </nav>
 
 <!-- PROJECT HEADER -->
 <div class="project-hero">
   <div class="project-meta">
-    <span class="project-tag" id="categoryTag">Category</span>
-    <span class="project-year" id="yearHeader">2025</span>
+    <span class="project-tag" id="projectCategory">3D Printing</span>
+    <span class="project-year" id="projectYear">2025</span>
   </div>
 
-  <h1 class="project-title" id="projectTitle">Project Naam</h1>
-  <p class="project-summary" id="projectDescription">Beschrijving wordt geladen...</p>
+  <h1 class="project-title" id="projectTitle">Project <em>Naam</em></h1>
+
+  <p class="project-summary" id="projectDescription">Korte beschrijving van je project in het Nederlands.</p>
 </div>
 
 <!-- HERO IMAGE -->
 <div class="hero-image-wrap">
-  <img id="heroImage" src="" alt="Project image" onerror="this.parentElement.style.display='none'"/>
+  <img id="heroImage" src="../images/jouw-project-hero.jpg" alt="Project naam" onerror="this.parentElement.style.display='none'"/>
 </div>
 
 <!-- GALLERY -->
 <div class="gallery-section">
-  <span class="section-label">Photos</span>
+  <span class="section-label" data-nl="Foto's" data-en="Photos">Foto's</span>
 
-  <!-- Layout A: 1 grote links + 2 kleine rechts -->
-  <div class="gallery-a" id="galleryA">
+  <!-- LAYOUT A: 1 grote links + 2 kleine rechts (aanbevolen) -->
+  <div class="gallery-a">
     <div class="main">
-      <img id="img-main" src="" alt="Main image" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
+      <img id="img-1" src="../images/foto-1.jpg" alt="Foto 1" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
     </div>
     <div class="side">
-      <img id="img-2" src="" alt="Image 2" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
+      <img id="img-2" src="../images/foto-2.jpg" alt="Foto 2" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
     </div>
     <div class="side">
-      <img id="img-3" src="" alt="Image 3" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
+      <img id="img-3" src="../images/foto-3.jpg" alt="Foto 3" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
     </div>
   </div>
 </div>
 
 <!-- PROJECT INFO -->
 <div class="project-info">
+
+  <!-- LINKER KOLOM: Uitgebreide beschrijving -->
   <div>
     <div class="info-section">
-      <span class="info-label">About this project</span>
-      <div class="info-body" id="projectDescription-full">
-        <p>Project beschrijving zal hier worden geladen...</p>
+      <span class="info-label" data-nl="Over dit project" data-en="About this project">Over dit project</span>
+      <div class="info-body" id="projectFullDescription">
+        <p>Beschrijf hier je project uitgebreid. Waarom heb je het gemaakt? Wat was het doel?</p>
       </div>
     </div>
 
     <div class="info-section">
-      <span class="info-label">Approach</span>
+      <span class="info-label" data-nl="Aanpak" data-en="Approach">Aanpak</span>
       <div class="info-body">
         <ul id="aanpakList">
-          <li>Stap 1</li>
-          <li>Stap 2</li>
-          <li>Stap 3</li>
+          <li>Stap 1 van je aanpak</li>
+          <li>Stap 2 van je aanpak</li>
+          <li>Stap 3 van je aanpak</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- SIDEBAR -->
-  <div>
+  <!-- RECHTER KOLOM: Sidebar met project details -->
+  <div class="info-sidebar">
+
     <div class="sidebar-block">
-      <span class="sidebar-label">Category</span>
-      <div class="sidebar-value" id="categorySidebar">3D Printing</div>
+      <span class="sidebar-label" data-nl="Categorie" data-en="Category">Categorie</span>
+      <div class="sidebar-value" id="sidebarCategory">3D Printing</div>
     </div>
 
     <div class="sidebar-block">
-      <span class="sidebar-label">Materials & Tools</span>
+      <span class="sidebar-label" data-nl="Materialen & Tools" data-en="Materials & Tools">Materialen & Tools</span>
       <div class="sidebar-value" id="materialsContainer">
-        <!-- Tags worden hier ingeladen -->
+        <!-- Wordt dynamisch gevuld -->
       </div>
     </div>
 
     <div class="sidebar-block">
-      <span class="sidebar-label">Year</span>
-      <div class="sidebar-value" id="yearSidebar">2025</div>
+      <span class="sidebar-label" data-nl="Jaar" data-en="Year">Jaar</span>
+      <div class="sidebar-value" id="sidebarYear">2025</div>
     </div>
 
     <div class="sidebar-block">
-      <span class="sidebar-label">Status</span>
-      <div class="sidebar-value" id="statusSidebar">Completed</div>
+      <span class="sidebar-label" data-nl="Status" data-en="Status">Status</span>
+      <div class="sidebar-value" id="sidebarStatus">Afgerond</div>
     </div>
+
+    <!-- Link naar extern platform -->
+    <div class="sidebar-block">
+      <span class="sidebar-label" data-nl="Link" data-en="Link">Link</span>
+      <a href="https://makerworld.com/@TooMuchESP" target="_blank" style="color:var(--accent);font-size:.84rem;text-decoration:none;">
+        MakerWorld ↗
+      </a>
+    </div>
+
   </div>
 </div>
 
@@ -226,37 +244,70 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Tom Damhof <span style="color:var(--accent)">·</span> Maker Portfolio</p>
-  <p><a href="../index.html">← Back to portfolio</a></p>
+  <p>© 2026 Tom Damhof <span style="color:var(--accent)">·</span> <span data-nl="Maker Portfolio" data-en="Maker Portfolio">Maker Portfolio</span></p>
+  <p><a href="../index.html" data-nl="← Terug naar portfolio" data-en="← Back to portfolio">← Terug naar portfolio</a></p>
 </footer>
 
 <script>
+  // ═══════════════════════════════════════════════════════════
+  // GLOBALE VARIABELEN
+  // ═══════════════════════════════════════════════════════════
   let lang = 'nl';
   let currentProject = null;
 
   // ═══════════════════════════════════════════════════════════
-  // CORE FUNCTIONS
+  // CURSOR
   // ═══════════════════════════════════════════════════════════
-
-  // Cursor animation
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
-
   document.querySelectorAll('a,button,img').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('big'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
   });
 
-  // Get project ID from URL
+  // ═══════════════════════════════════════════════════════════
+  // LIGHTBOX
+  // ═══════════════════════════════════════════════════════════
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // ═══════════════════════════════════════════════════════════
+  // TAAL TOGGLE
+  // ═══════════════════════════════════════════════════════════
+  function toggleLang() {
+    lang = lang === 'nl' ? 'en' : 'nl';
+    document.getElementById('langLabel').textContent = lang === 'nl' ? 'EN' : 'NL';
+    document.documentElement.lang = lang;
+    
+    // Update alle elementen met data-nl en data-en
+    document.querySelectorAll('[data-nl][data-en]').forEach(el => {
+      const text = lang === 'nl' ? el.getAttribute('data-nl') : el.getAttribute('data-en');
+      if (text) el.textContent = text;
+    });
+    
+    // Re-render project
+    if (currentProject) renderProject(currentProject);
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // PROJECT LADEN UIT JSON
+  // ═══════════════════════════════════════════════════════════
   function getProjectId() {
     const params = new URLSearchParams(window.location.search);
     return params.get('id');
   }
 
-  // Load JSON
   async function loadProject() {
     try {
       const res = await fetch('../projects.json');
@@ -274,36 +325,39 @@
     }
   }
 
-  // Render all data
+  // ═══════════════════════════════════════════════════════════
+  // PROJECT RENDEREN
+  // ═══════════════════════════════════════════════════════════
   function renderProject(project) {
     const t = lang === 'nl' ? 0 : 1;
 
-    // Header
-    document.getElementById('projectTitle').textContent = project.title[t];
-    document.getElementById('categoryTag').textContent = project.categorie[t];
-    document.getElementById('yearHeader').textContent = project.year;
-
-    // Descriptions
+    // HEADER
+    document.getElementById('projectTitle').innerHTML = project.title[t];
+    document.getElementById('projectCategory').textContent = project.categorie[t];
+    document.getElementById('projectYear').textContent = project.year;
     document.getElementById('projectDescription').textContent = project.description[t];
-    document.getElementById('projectDescription-full').innerHTML = 
-      `<p>${project.description[t]}</p>`;
 
-    // Sidebar
-    document.getElementById('categorySidebar').textContent = project.categorie[t];
-    document.getElementById('yearSidebar').textContent = project.year;
-    document.getElementById('statusSidebar').textContent = project.status[t];
+    // SIDEBAR
+    document.getElementById('sidebarCategory').textContent = project.categorie[t];
+    document.getElementById('sidebarYear').textContent = project.year;
+    document.getElementById('sidebarStatus').textContent = project.status[t];
 
-    // Materials tags
+    // BESCHRIJVING (zelfde als description, kan je hier uitbreiden)
+    document.getElementById('projectFullDescription').innerHTML = '<p>' + project.description[t] + '</p>';
+
+    // MATERIALEN TAGS
     const matContainer = document.getElementById('materialsContainer');
     matContainer.innerHTML = '';
-    project.tags.forEach(tag => {
-      const span = document.createElement('span');
-      span.className = 'sidebar-tag';
-      span.textContent = tag;
-      matContainer.appendChild(span);
-    });
+    if (project.tags) {
+      project.tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'sidebar-tag';
+        span.textContent = tag;
+        matContainer.appendChild(span);
+      });
+    }
 
-    // Approach
+    // AANPAK LIJST
     const aanpakList = document.getElementById('aanpakList');
     aanpakList.innerHTML = '';
     if (project.aanpak && project.aanpak[t]) {
@@ -314,14 +368,11 @@
       });
     }
 
-    // Images
+    // AFBEELDINGEN
     if (project.images && project.images.length) {
       if (project.images[0]) {
-        const heroImg = document.getElementById('heroImage');
-        heroImg.src = '../' + project.images[0];
-      }
-      if (project.images[0]) {
-        document.getElementById('img-main').src = '../' + project.images[0];
+        document.getElementById('heroImage').src = '../' + project.images[0];
+        document.getElementById('img-1').src = '../' + project.images[0];
       }
       if (project.images[1]) {
         document.getElementById('img-2').src = '../' + project.images[1];
@@ -333,41 +384,8 @@
   }
 
   // ═══════════════════════════════════════════════════════════
-  // LIGHTBOX
-  // ═══════════════════════════════════════════════════════════
-
-  function openLightbox(src) {
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightbox').classList.add('open');
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-  }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  // ═══════════════════════════════════════════════════════════
-  // LANGUAGE
-  // ═══════════════════════════════════════════════════════════
-
-  function toggleLang() {
-    lang = lang === 'nl' ? 'en' : 'nl';
-    document.getElementById('langLabel').textContent = lang === 'nl' ? 'EN' : 'NL';
-    document.documentElement.lang = lang;
-    
-    // Re-render with new language
-    if (currentProject) {
-      renderProject(currentProject);
-    }
-  }
-
-  // ═══════════════════════════════════════════════════════════
   // INIT
   // ═══════════════════════════════════════════════════════════
-
   loadProject();
 </script>
 
