@@ -50,10 +50,6 @@
     .project-title em{font-style:italic;color:var(--accent)}
     .project-summary{color:var(--muted);font-size:.9rem;max-width:65ch;margin-bottom:1rem;line-height:1.85}
 
-    /* HERO IMAGE */
-    .hero-image-wrap{max-width:1200px;margin:0 auto;padding:0 3rem 4rem}
-    .hero-image-wrap img{width:100%;max-height:560px;object-fit:cover;border-radius:12px;display:block}
-
     /* GALLERY */
     .gallery-section{max-width:1200px;margin:0 auto;padding:0 3rem 5rem}
     .section-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem;display:block}
@@ -146,11 +142,6 @@
   <h1 class="project-title" id="projectTitle">Project <em>Naam</em></h1>
 
   <p class="project-summary" id="projectDescription">Korte beschrijving van je project in het Nederlands.</p>
-</div>
-
-<!-- HERO IMAGE -->
-<div class="hero-image-wrap">
-  <img id="heroImage" src="../images/jouw-project-hero.jpg" alt="Project naam" onerror="this.parentElement.style.display='none'"/>
 </div>
 
 <!-- GALLERY -->
@@ -368,7 +359,6 @@
     // AFBEELDINGEN
     if (project.images && Array.isArray(project.images) && project.images.length > 0) {
       if (project.images[0]) {
-        document.getElementById('heroImage').src = '../' + project.images[0];
         document.getElementById('img-1').src = '../' + project.images[0];
       }
       if (project.images[1]) {
