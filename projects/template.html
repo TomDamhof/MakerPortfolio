@@ -183,7 +183,7 @@
   <div>
     <div class="info-section">
       <span class="info-label" data-nl="Over dit project" data-en="About this project">Over dit project</span>
-      <div class="info-body" id="projectFullDescription">
+      <div class="info-body" id="projectAbout">
         <p>Beschrijf hier je project uitgebreid. Waarom heb je het gemaakt? Wat was het doel?</p>
       </div>
     </div>
@@ -343,6 +343,9 @@
 
     // BESCHRIJVING
     document.getElementById('projectFullDescription').innerHTML = '<p>' + getText(project.description) + '</p>';
+
+    //  Bbout
+    document.getElementById('projectAbout').innerHTML = '<p>' + getText(project.about) + '</p>';
 
     // MATERIALEN TAGS
     const matContainer = document.getElementById('materialsContainer');
