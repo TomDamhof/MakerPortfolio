@@ -1,17 +1,27 @@
+// 1. verander de 'id' naar het proiekt naam.
+// 2. verander in file de id=project-...
+// 3. verander de title
+// 4. verander description 
+// 5. geef hem in de juiste categorie (hooft catgorie)
+//    Zoals: Electronics, Video, 3D Print,
+// 6. juiste status tags (materialen & tools) waar op gefiltert kan worden.
+//    Zoals: Electronics, 3D cad, 3D print, Soldering, Video
+// 7. 
+
 [
   {
-    "id": "project-1",
+    "id": "Subscriber Counter",
     "file": "projects/template.html?id=project-1",
     "title": {
-      "nl": "Custom 3D Printer Enclosure",
-      "en": "Custom 3D Printer Enclosure"
+      "nl": "Subscriber Counter",
+      "en": "Subscriber Counter"
     },
-    "description": {"nl": "Een geïsoleerde behuizing voor mijn 3D printer met temperatuurbeheer en luchtfiltering.",
-    "en": "An insulated enclosure for my 3D printer with temperature control and air filtering."
+    "description": {"nl": "Een live-updatende YouTube-abonnees- en weergaveteller die automatisch de helderheid aanpast aan de omgeving.",
+    "en": "A live-updating YouTube subscriber and view counter that automatically adjusts its brightness to the surroundings."
     },
     "categorie": {
-      "nl": "3D Printing",
-      "en": "3D Printing"
+      "nl": "Elektronica",
+      "en": "Electronics"
     },
     "status": {
       "nl": "Afgerond",
@@ -19,17 +29,27 @@
     },
     "aanpak": {
       "nl": [
-        "Ontwerp in Fusion 360 met interne componenten",
-        "3D printen van onderdelen in PETG",
-        "Assemblage en integratie elektronica"
+        "Idee bedenken en uitwerken",
+        "Onderdelen zoeken en samen testen",
+        "Code schrijven in Arduino IDE",
+        "3D model maken in Fusion 360",
+        "Onderdelen uitprinten in PLA",
+        "Alles samenbouwen",
+        "Bugs oplossen",
+        "Video opnemen en editen"
       ],
       "en": [
-        "Design in Fusion 360 with internal components",
-        "3D printing parts in PETG",
-        "Assembly and electronics integration"
+        "Coming up with and developing the idea",
+        "Sourcing and testing components together",
+        "Writing code in Arduino IDE",
+        "Creating a 3D model in Fusion 360",
+        "Printing parts in PLA",
+        "Assembling everything",
+        "Debugging and fixing issues",
+        "Recording and editing the video"
       ]
     },
-    "tags": ["Fusion 360", "PETG", "Electronics", "3D Printing"],
+    "tags": ["3D cad", "Electronics", "Arduino", "Code", "Video"],
     "year": "2024",
     "thumb": "images/custom-enclosure-thumb.jpg",
     "images": [
