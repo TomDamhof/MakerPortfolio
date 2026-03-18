@@ -203,12 +203,7 @@
   <!-- RECHTER KOLOM: Sidebar met project details -->
   <div class="info-sidebar">
 
-    <div class="sidebar-block">
-      <span class="sidebar-label" data-nl="Categorie" data-en="Category">Categorie</span>
-      <div class="sidebar-value" id="sidebarCategory">3D Printing</div>
-    </div>
-
-    <div class="sidebar-block">
+      <div class="sidebar-block">
       <span class="sidebar-label" data-nl="Materialen & Tools" data-en="Materials & Tools">Materialen & Tools</span>
       <div class="sidebar-value" id="materialsContainer">
         <!-- Wordt dynamisch gevuld -->
@@ -339,7 +334,7 @@
     document.getElementById('projectDescription').textContent = getText(project.description);
 
     // SIDEBAR
-    document.getElementById('sidebarCategory').textContent = getText(project.categorie);
+    // document.getElementById('sidebarCategory').textContent = getText(project.categorie);
     document.getElementById('sidebarYear').textContent = project.year;
     document.getElementById('sidebarStatus').textContent = getText(project.status);
 
