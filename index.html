@@ -11,15 +11,12 @@
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--fg);font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;overflow-x:hidden;cursor:none}
 
-    /* CURSOR */
     #cursor{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
     #cursor.big{width:40px;height:40px;background:transparent;border:1.5px solid var(--accent)}
 
-    /* LANG BTN */
     .lang-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;background:var(--fg);color:var(--bg);border:none;border-radius:99px;padding:.55rem 1.2rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:background .2s}
     .lang-btn:hover{background:var(--accent)}
 
-    /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(249,248,246,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
     .nav-logo{font-family:'DM Serif Display',serif;font-size:1.15rem;text-decoration:none;color:var(--fg)}
     .nav-logo span{color:var(--accent)}
@@ -27,7 +24,6 @@
     .nav-links a{color:var(--muted);text-decoration:none;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
     .nav-links a:hover{color:var(--fg)}
 
-    /* HERO */
     #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 3rem 4rem;gap:4rem;position:relative;overflow:hidden}
     .hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'DM Serif Display',serif;font-size:clamp(8rem,22vw,24rem);color:rgba(0,0,0,.03);white-space:nowrap;pointer-events:none;user-select:none}
     .hero-left{position:relative;z-index:1}
@@ -43,7 +39,6 @@
     .float2{animation:floatA 5s ease-in-out 1.2s infinite}
     @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
-    /* ABOUT */
     #about{padding:7rem 3rem;display:grid;grid-template-columns:1fr 2fr;gap:5rem;border-top:1px solid var(--border);max-width:1200px;margin:0 auto}
     .section-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding-top:.3rem}
     .about-text h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.9rem);line-height:1.12;margin-bottom:1.4rem}
@@ -53,7 +48,6 @@
     .stat-num span{color:var(--accent)}
     .stat-label{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
 
-    /* PROJECTS */
     #projects{padding:7rem 3rem;background:var(--fg);color:var(--bg)}
     #projects .inner{max-width:1200px;margin:0 auto}
     .projects-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem}
@@ -62,10 +56,8 @@
     .project-count{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3)}
     .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.07)}
 
-    /* loading state */
     .projects-loading{grid-column:1/-1;padding:3rem;text-align:center;color:rgba(255,255,255,.3);font-size:.8rem;letter-spacing:.08em}
 
-    /* FILTER */
     .filter-bar{margin-bottom:2rem}
     .filter-select{appearance:none;background:rgba(255,255,255,.06);color:var(--bg);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:.65rem 2.8rem .65rem 1rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:none;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center}
     .filter-select:focus{outline:none;border-color:rgba(255,255,255,.3)}
@@ -77,14 +69,23 @@
     .project-card:hover::after{transform:scaleX(1)}
     .card-thumb{width:100%;height:160px;object-fit:cover;border-radius:6px;margin-bottom:1.4rem;display:block;background:rgba(255,255,255,.05)}
     .card-thumb-placeholder{width:100%;height:160px;border-radius:6px;margin-bottom:1.4rem;background:rgba(255,255,255,.05);border:1.5px dashed rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.15);font-size:.7rem;letter-spacing:.06em}
-    .card-tag{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .card-tag{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .card-title{font-family:'DM Serif Display',serif;font-size:1.22rem;margin-bottom:.7rem;line-height:1.2}
     .card-desc{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.7;padding-bottom:1.5rem}
     .card-year{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
     .card-arrow{position:absolute;bottom:1.8rem;right:1.8rem;font-size:.85rem;color:rgba(255,255,255,.18);transition:color .2s,transform .2s}
     .project-card:hover .card-arrow{color:var(--accent);transform:translate(3px,-3px)}
 
-    /* CONTACT */
+    /* Only NEW cards animate — existing ones stay put */
+    @keyframes cardSlideIn {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .card-enter {
+      opacity: 0;
+      animation: cardSlideIn .4s ease forwards;
+    }
+
     #contact{padding:7rem 3rem;max-width:1200px;margin:0 auto}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem}
     .contact-left h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin-bottom:1rem}
@@ -96,18 +97,12 @@
     .social-icon{width:30px;height:30px;background:var(--fg);color:var(--bg);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .social-handle{margin-left:auto;color:var(--muted);font-size:.7rem}
 
-    /* FOOTER */
     footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
     footer p{font-size:.7rem;color:var(--muted)}
     .footer-dot{color:var(--accent)}
 
-    /* ANIMATIONS */
     @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    @keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes cardOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(16px)}}
-    .card-animate-in{animation:cardIn .35s ease forwards}
-    .card-animate-out{animation:cardOut .25s ease forwards}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
     .reveal.visible{opacity:1;transform:none}
 
@@ -133,7 +128,6 @@
   <span id="langLabel">EN</span>
 </button>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Tom <span>Damhof</span></a>
   <ul class="nav-links">
@@ -143,7 +137,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg-text">MAKE</div>
   <div class="hero-left">
@@ -206,7 +199,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-label reveal" data-nl="Over mij" data-en="About me">Over mij</div>
   <div class="about-text reveal">
@@ -226,7 +218,6 @@
   </div>
 </section>
 
-<!-- PROJECTS — loaded from projects.json -->
 <section id="projects">
   <div class="inner">
     <div class="projects-header reveal">
@@ -247,7 +238,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-label reveal" data-nl="Contact" data-en="Contact">Contact</div>
   <div class="contact-grid">
@@ -290,51 +280,60 @@
 </footer>
 
 <script>
-  // Cursor
+  // ── Cursor ──────────────────────────────────────────────────
   const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
-  function addHover(el){ el.addEventListener('mouseenter',()=>cursor.classList.add('big')); el.addEventListener('mouseleave',()=>cursor.classList.remove('big')); }
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+  });
+  function addHover(el) {
+    el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+  }
   document.querySelectorAll('a, button, select').forEach(addHover);
 
-  // Scroll reveal
+  // ── Scroll reveal ───────────────────────────────────────────
   const obs = new IntersectionObserver(entries => {
-    entries.forEach((entry,i) => {
-      if(entry.isIntersecting){
-        entry.target.style.transitionDelay = (i%3)*.1+'s';
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i % 3) * .1 + 's';
         entry.target.classList.add('visible');
         obs.unobserve(entry.target);
       }
     });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  let currentLang = 'nl';
-  let allProjects = [];
-  let activeFilter = '';
-  const ROWS = [3,6,9,12,15,18,21,24,27,30,33,36,39];//21
-  let visibleStep = 0;
+  // ── State ───────────────────────────────────────────────────
+  let currentLang      = 'nl';
+  let allProjects      = [];
+  let activeFilter     = '';
+  let currentFiltered  = [];  // the active filtered list
+  let visibleCount     = 3;   // how many cards are currently in the DOM
+  const PAGE           = 3;   // cards added per click
 
-  async function loadProjects(){
+  // ── Load ────────────────────────────────────────────────────
+  async function loadProjects() {
     const grid = document.getElementById('projectsGrid');
     try {
       const res = await fetch('projects.json');
-      if(!res.ok) throw new Error();
+      if (!res.ok) throw new Error();
       allProjects = await res.json();
       buildFilterDropdown();
-      renderProjects();
-    } catch(e) {
+      fullRender();
+    } catch (e) {
       grid.innerHTML = '<div class="projects-loading">Voeg projecten toe aan projects.json om ze hier te zien.</div>';
     }
   }
 
-  function buildFilterDropdown(){
+  function buildFilterDropdown() {
     const tagSet = new Set();
     allProjects.forEach(p => {
       const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
       tags.forEach(t => tagSet.add(t.trim()));
     });
     const select = document.getElementById('filterSelect');
-    while(select.options.length > 1) select.remove(1);
+    while (select.options.length > 1) select.remove(1);
     [...tagSet].sort().forEach(tag => {
       const opt = document.createElement('option');
       opt.value = tag;
@@ -344,122 +343,160 @@
     addHover(select);
   }
 
-  function filterProjects(){
+  // ── Filter change → reset and full rebuild ──────────────────
+  function filterProjects() {
     activeFilter = document.getElementById('filterSelect').value;
-    visibleStep = 0;
-    renderProjects();
+    visibleCount = PAGE;
+    fullRender();
   }
 
-  function renderProjects(){
-    const grid = document.getElementById('projectsGrid');
-    const countEl = document.getElementById('projCount');
-
-    const filtered = activeFilter
+  // ── Full rebuild (on filter / lang / collapse) ──────────────
+  function fullRender() {
+    currentFiltered = activeFilter
       ? allProjects.filter(p => {
           const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
-          return tags.map(t=>t.trim()).includes(activeFilter);
+          return tags.map(t => t.trim()).includes(activeFilter);
         })
       : allProjects;
 
-    const n = filtered.length;
-    const countNl = String(n).padStart(2,'0') + (n===1?' project':' projecten');
-    const countEn = String(n).padStart(2,'0') + (n===1?' project':' projects');
-    countEl.textContent = currentLang==='nl' ? countNl : countEn;
-    countEl.setAttribute('data-nl', countNl);
-    countEl.setAttribute('data-en', countEn);
+    updateCount(currentFiltered.length);
 
-    if(n===0){ grid.innerHTML='<div class="projects-loading">Geen projecten gevonden.</div>'; renderShowMore(0,0); return; }
+    const grid = document.getElementById('projectsGrid');
 
-    const maxVisible = ROWS[Math.min(visibleStep, ROWS.length-1)];
-    const prevCount = grid.querySelectorAll('.project-card').length;
-    const visible = filtered.slice(0, maxVisible);
-
-    grid.innerHTML = visible.map((p, i) => {
-      const desc = (currentLang==='en' && p.description_en) ? p.description_en : p.description;
-      const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
-      const tagHtml = tags.join(' · ');
-      const thumb = p.thumb
-        ? `<img src="${p.thumb}" alt="${p.title}" class="card-thumb" onerror="this.outerHTML='<div class=\\'card-thumb-placeholder\\'>NO IMAGE</div>'">`
-        : `<div class="card-thumb-placeholder">NO IMAGE</div>`;
-      const isNew = i >= prevCount;
-      return `
-        <a href="${p.file}" class="project-card reveal ${isNew ? 'card-animate-in' : ''}">
-          ${thumb}
-          <div class="card-tag">${tagHtml}</div>
-          <div class="card-title">${p.title}</div>
-          <div class="card-desc">${desc}</div>
-          <div class="card-year">${p.year||''}</div>
-          <span class="card-arrow">↗</span>
-        </a>`;
-    }).join('');
-
-    document.querySelectorAll('.project-card').forEach(addHover);
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-    renderShowMore(filtered.length, maxVisible);
-  }
-
-  function renderShowMore(total, shown){
-    let btn = document.getElementById('showMoreBtn');
-    if(!btn){
-      btn = document.createElement('div');
-      btn.id = 'showMoreBtn';
-      btn.style.cssText = 'text-align:center;margin-top:2rem;display:flex;gap:1rem;justify-content:center;';
-      document.getElementById('projectsGrid').after(btn);
-    }
-    btn.innerHTML = '';
-
-    const btnStyle = 'background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.7rem 2rem;font-family:\'DM Mono\',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:color .2s,border-color .2s;';
-
-    if(shown < total){
-      const meerLabel = currentLang==='nl' ? 'Meer zien' : 'Show more';
-      const meer = document.createElement('button');
-      meer.textContent = meerLabel;
-      meer.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.4);');
-      meer.onmouseenter = () => { meer.style.color='#fff'; meer.style.borderColor='rgba(255,255,255,.4)'; };
-      meer.onmouseleave = () => { meer.style.color='rgba(255,255,255,.4)'; meer.style.borderColor='rgba(255,255,255,.15)'; };
-      meer.onclick = () => showMore();
-      addHover(meer);
-      btn.appendChild(meer);
+    if (currentFiltered.length === 0) {
+      grid.innerHTML = '<div class="projects-loading">Geen projecten gevonden.</div>';
+      renderButtons();
+      return;
     }
 
-    if(visibleStep > 0){
-      const minderLabel = currentLang==='nl' ? 'Minder zien' : 'Collapse';
-      const minder = document.createElement('button');
-      minder.textContent = minderLabel;
-      minder.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.2);');
-      minder.onmouseenter = () => { minder.style.color='#fff'; minder.style.borderColor='rgba(255,255,255,.4)'; };
-      minder.onmouseleave = () => { minder.style.color='rgba(255,255,255,.2)'; minder.style.borderColor='rgba(255,255,255,.15)'; };
-      minder.onclick = () => showLess();
-      addHover(minder);
-      btn.appendChild(minder);
+    const toShow = currentFiltered.slice(0, visibleCount);
+    grid.innerHTML = '';
+    toShow.forEach((p, i) => {
+      const el = createCard(p);
+      el.style.animationDelay = (i * 0.05) + 's';
+      el.classList.add('card-enter');
+      grid.appendChild(el);
+      addHover(el);
+    });
+
+    renderButtons();
+  }
+
+  // ── Append ONLY the new cards — existing ones stay untouched ─
+  function showMore() {
+    const from = visibleCount;
+    visibleCount = Math.min(visibleCount + PAGE, currentFiltered.length);
+
+    // Nothing new to add?
+    if (from >= currentFiltered.length) { renderButtons(); return; }
+
+    const grid      = document.getElementById('projectsGrid');
+    const newSlice  = currentFiltered.slice(from, visibleCount);
+
+    newSlice.forEach((p, i) => {
+      const el = createCard(p);
+      el.style.animationDelay = (i * 0.07) + 's';
+      el.classList.add('card-enter');
+      grid.appendChild(el);
+      addHover(el);
+    });
+
+    renderButtons();
+  }
+
+  // ── Collapse back to first page ──────────────────────────────
+  function showLess() {
+    visibleCount = PAGE;
+    fullRender();
+  }
+
+  // ── Build one card element ───────────────────────────────────
+  function createCard(p) {
+    const desc    = (currentLang === 'en' && p.description_en) ? p.description_en : p.description;
+    const tags    = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
+    const tagHtml = tags.join(' · ');
+    const thumb   = p.thumb
+      ? `<img src="${p.thumb}" alt="${p.title}" class="card-thumb" onerror="this.outerHTML='<div class=\\'card-thumb-placeholder\\'>NO IMAGE</div>'">`
+      : `<div class="card-thumb-placeholder">NO IMAGE</div>`;
+
+    const a = document.createElement('a');
+    a.href      = p.file || '#';
+    a.className = 'project-card';
+    a.innerHTML = `
+      ${thumb}
+      <div class="card-tag">${tagHtml}</div>
+      <div class="card-title">${p.title}</div>
+      <div class="card-desc">${desc}</div>
+      <div class="card-year">${p.year || ''}</div>
+      <span class="card-arrow">↗</span>`;
+    return a;
+  }
+
+  // ── Counter label ────────────────────────────────────────────
+  function updateCount(n) {
+    const el  = document.getElementById('projCount');
+    const nl  = String(n).padStart(2, '0') + (n === 1 ? ' project' : ' projecten');
+    const en  = String(n).padStart(2, '0') + (n === 1 ? ' project' : ' projects');
+    el.textContent = currentLang === 'nl' ? nl : en;
+    el.setAttribute('data-nl', nl);
+    el.setAttribute('data-en', en);
+  }
+
+  // ── Meer / Minder buttons ────────────────────────────────────
+  function renderButtons() {
+    let wrap = document.getElementById('showMoreBtn');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.id = 'showMoreBtn';
+      wrap.style.cssText = 'text-align:center;margin-top:2rem;display:flex;gap:1rem;justify-content:center;';
+      document.getElementById('projectsGrid').after(wrap);
+    }
+    wrap.innerHTML = '';
+
+    const base = `background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:6px;` +
+                 `padding:.7rem 2rem;font-family:'DM Mono',monospace;font-size:.72rem;` +
+                 `letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:color .2s,border-color .2s;`;
+
+    if (visibleCount < currentFiltered.length) {
+      const label = currentLang === 'nl' ? 'Meer zien' : 'Show more';
+      const b = document.createElement('button');
+      b.textContent = label;
+      b.setAttribute('style', base + 'color:rgba(255,255,255,.4);');
+      b.onmouseenter = () => { b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,.4)'; };
+      b.onmouseleave = () => { b.style.color = 'rgba(255,255,255,.4)'; b.style.borderColor = 'rgba(255,255,255,.15)'; };
+      b.onclick = () => showMore();
+      addHover(b);
+      wrap.appendChild(b);
+    }
+
+    if (visibleCount > PAGE && currentFiltered.length > 0) {
+      const label = currentLang === 'nl' ? 'Minder zien' : 'Collapse';
+      const b = document.createElement('button');
+      b.textContent = label;
+      b.setAttribute('style', base + 'color:rgba(255,255,255,.2);');
+      b.onmouseenter = () => { b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,.4)'; };
+      b.onmouseleave = () => { b.style.color = 'rgba(255,255,255,.2)'; b.style.borderColor = 'rgba(255,255,255,.15)'; };
+      b.onclick = () => showLess();
+      addHover(b);
+      wrap.appendChild(b);
     }
   }
 
-  function showMore(){
-    visibleStep = Math.min(visibleStep + 1, ROWS.length - 1);
-    renderProjects();
-  }
-
-  function showLess(){
-    visibleStep = 0;
-    renderProjects();
+  // ── Language toggle ──────────────────────────────────────────
+  function toggleLang() {
+    currentLang = currentLang === 'nl' ? 'en' : 'nl';
+    document.getElementById('langLabel').textContent = currentLang === 'nl' ? 'EN' : 'NL';
+    document.documentElement.lang = currentLang;
+    const allOpt = document.querySelector('#filterSelect option[value=""]');
+    if (allOpt) allOpt.textContent = currentLang === 'nl' ? 'Alle categorieën' : 'All categories';
+    document.querySelectorAll('[data-nl]').forEach(el => {
+      const txt = el.getAttribute('data-' + currentLang);
+      if (txt) el.innerHTML = txt;
+    });
+    fullRender();
   }
 
   loadProjects();
-
-  function toggleLang(){
-    currentLang = currentLang==='nl' ? 'en' : 'nl';
-    document.getElementById('langLabel').textContent = currentLang==='nl' ? 'EN' : 'NL';
-    document.documentElement.lang = currentLang;
-    const allOpt = document.querySelector('#filterSelect option[value=""]');
-    if(allOpt) allOpt.textContent = currentLang==='nl' ? 'Alle categorieën' : 'All categories';
-    document.querySelectorAll('[data-nl]').forEach(el=>{
-      const txt = el.getAttribute('data-'+currentLang);
-      if(txt) el.innerHTML = txt;
-    });
-    renderProjects();
-  }
 </script>
 </body>
 </html>
