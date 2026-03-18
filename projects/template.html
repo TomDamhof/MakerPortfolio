@@ -99,7 +99,7 @@
     .sidebar-tag{display:inline-block;background:var(--fg);color:var(--bg);font-size:.68rem;padding:.2rem .65rem;border-radius:4px;margin:.2rem .2rem 0 0;letter-spacing:.06em}
 
     /* FOOTER */
-    footer{border-top:1px solid var(--border);padding:4rem 3rem;display:flex;justify-content:space-between}
+    footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between}
     footer p{font-size:.7rem;color:var(--muted)}
     footer a{color:var(--accent);text-decoration:none}
 
@@ -203,7 +203,12 @@
   <!-- RECHTER KOLOM: Sidebar met project details -->
   <div class="info-sidebar">
 
-      <div class="sidebar-block">
+    <div class="sidebar-block">
+      <span class="sidebar-label" data-nl="Categorie" data-en="Category">Categorie</span>
+      <div class="sidebar-value" id="sidebarCategory">3D Printing</div>
+    </div>
+
+    <div class="sidebar-block">
       <span class="sidebar-label" data-nl="Materialen & Tools" data-en="Materials & Tools">Materialen & Tools</span>
       <div class="sidebar-value" id="materialsContainer">
         <!-- Wordt dynamisch gevuld -->
@@ -221,11 +226,9 @@
     </div>
 
     <!-- Link naar extern platform -->
-    <div class="sidebar-block">
-      <span class="sidebar-label" data-nl="Link" data-en="Link">Link</span>
-      <a href="https://makerworld.com/@TooMuchESP" target="_blank" style="color:var(--accent);font-size:.84rem;text-decoration:none;">
-        MakerWorld ↗
-      </a>
+    <div class="sidebar-block" id="linksBlock" style="display:none;">
+      <span class="sidebar-label" data-nl="Links" data-en="Links">Links</span>
+      <div id="linksContainer"></div>
     </div>
 
   </div>
@@ -334,7 +337,7 @@
     document.getElementById('projectDescription').textContent = getText(project.description);
 
     // SIDEBAR
-    // document.getElementById('sidebarCategory').textContent = getText(project.categorie);
+    document.getElementById('sidebarCategory').textContent = getText(project.categorie);
     document.getElementById('sidebarYear').textContent = project.year;
     document.getElementById('sidebarStatus').textContent = getText(project.status);
 
@@ -379,6 +382,38 @@
       if (project.images[2]) {
         document.getElementById('img-3').src = '../' + project.images[2];
       }
+    }
+
+    // LINKS
+    const linksBlock = document.getElementById('linksBlock');
+    const linksContainer = document.getElementById('linksContainer');
+    
+    if (project.links && typeof project.links === 'object' && Object.keys(project.links).length > 0) {
+      linksBlock.style.display = 'block';
+      linksContainer.innerHTML = '';
+      
+      const linkLabels = {
+        'youtube': '▶ YouTube',
+        'makerworld': '🔧 MakerWorld',
+        'github': '⚙ GitHub',
+        'instagram': '📷 Instagram',
+        'twitter': '𝕏 Twitter',
+        'website': '🌐 Website',
+        'thingiverse': '⊡ Thingiverse',
+        'printables': '⊡ Printables'
+      };
+      
+      Object.entries(project.links).forEach(([key, url]) => {
+        const label = linkLabels[key] || key.charAt(0).toUpperCase() + key.slice(1);
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.style.cssText = 'color:var(--accent);font-size:.84rem;text-decoration:none;display:block;margin-bottom:.5rem;';
+        a.textContent = label + ' ↗';
+        linksContainer.appendChild(a);
+      });
+    } else {
+      linksBlock.style.display = 'none';
     }
   }
 
