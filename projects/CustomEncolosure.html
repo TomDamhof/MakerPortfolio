@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ═══════════════════════════════════════
+       STAP 1 — Verander de browsertab titel
+       ═══════════════════════════════════════ -->
   <title>Custom Enclosure — Tom Damhof</title>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root { --bg:#f9f8f6; --fg:#111110; --accent:#e63c1e; --muted:#888; --border:#e2e0db; --hover-bg:#f0eeea; }
@@ -36,6 +41,15 @@
     .gallery-a img:hover{opacity:.9}
     .gallery-a .main img{min-height:400px}
     .gallery-a .side img{height:190px}
+    .gallery-b{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .gallery-b img{width:100%;height:220px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;background:#e8e6e2}
+    .gallery-b img:hover{opacity:.9}
+    .gallery-c img{width:100%;max-height:480px;object-fit:cover;border-radius:8px;display:block}
+    .gallery-d{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .gallery-d img{width:100%;height:280px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;background:#e8e6e2}
+    .gallery-d img:hover{opacity:.9}
+    .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin-top:1rem}
+    .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
     .project-info{max-width:1200px;margin:0 auto;padding:0 3rem 7rem;display:grid;grid-template-columns:2fr 1fr;gap:5rem;border-top:1px solid var(--border);padding-top:4rem}
     .info-section{margin-bottom:2.5rem}
     .info-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;display:block}
@@ -57,7 +71,8 @@
     .lightbox-close:hover{opacity:1}
     @media(max-width:900px){
       .project-hero,.gallery-section,.project-info{padding-left:1.5rem;padding-right:1.5rem}
-      .gallery-a{grid-template-columns:1fr}.gallery-a .main{grid-row:auto}
+      .gallery-a,.gallery-d{grid-template-columns:1fr}.gallery-a .main{grid-row:auto}
+      .gallery-b{grid-template-columns:1fr 1fr}
       .project-info{grid-template-columns:1fr;gap:3rem}
       nav{padding:1.2rem 1.5rem}
       footer{padding:1.5rem;flex-direction:column;gap:.5rem}
@@ -66,74 +81,155 @@
 </head>
 <body>
 <div id="cursor"></div>
+
 <button class="lang-btn" onclick="toggleLang()" id="langBtn">
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
   <span id="langLabel">EN</span>
 </button>
+
 <nav>
-  <a href="../index.html" class="nav-logo">Tom <span>Damhof</span></a>
-  <a href="../index.html#projects" class="back-link">
+  <a href="index.html" class="nav-logo">Tom <span>Damhof</span></a>
+  <a href="index.html#projects" class="back-link">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
     <span data-nl="Terug naar projecten" data-en="Back to projects">Terug naar projecten</span>
   </a>
 </nav>
 
+
+<!-- ═══════════════════════════════════════
+     STAP 2 — TITEL & SAMENVATTING
+     ═══════════════════════════════════════ -->
 <div class="project-hero">
   <div class="project-meta">
+    <!-- Categorie tag — bijv. "3D Printing", "Electronics", "Video" -->
     <span class="project-tag">3D Printing</span>
+    <!-- Jaar -->
     <span class="project-year">2025</span>
   </div>
+
+  <!-- Titel: normaal woord + cursief woord in <em> -->
   <h1 class="project-title">Custom <em>Enclosure</em></h1>
-  <p class="project-summary" data-nl="Een op maat ontworpen behuizing voor elektronische projecten. FDM geprint in PETG, volledig parametrisch ontworpen in Fusion 360." data-en="A custom-designed housing for electronics projects. FDM printed in PETG, fully parametrically designed in Fusion 360.">
+
+  <!-- Korte samenvatting — NL en EN versie -->
+  <p class="project-summary"
+     data-nl="Een op maat ontworpen behuizing voor elektronische projecten. FDM geprint in PETG, volledig parametrisch ontworpen in Fusion 360."
+     data-en="A custom-designed housing for electronics projects. FDM printed in PETG, fully parametrically designed in Fusion 360.">
     Een op maat ontworpen behuizing voor elektronische projecten. FDM geprint in PETG, volledig parametrisch ontworpen in Fusion 360.
   </p>
 </div>
 
+
+<!-- ═══════════════════════════════════════
+     STAP 3 — FOTO'S
+     Kies één layout. Zet de andere in commentaar.
+     Foto's staan in de /images/ map.
+
+     Layout A = 1 grote + 2 kleine (standaard)
+     Layout B = 3 gelijke kolommen
+     Layout C = 1 brede foto
+     Layout D = 2 gelijke kolommen
+     Video   = YouTube embed
+     ═══════════════════════════════════════ -->
 <div class="gallery-section">
   <span class="section-label" data-nl="Foto's" data-en="Photos">Foto's</span>
+
+  <!-- ── Layout A: 1 grote links + 2 kleine rechts ── -->
   <div class="gallery-a">
     <div class="main">
-      <img src="../images/custom-enclosure-1.jpg" alt="Custom Enclosure voorkant" onclick="openLightbox(this.src)" onerror="this.style.background='#ddd'"/>
+      <img src="images/custom-enclosure-1.jpg" alt="Custom Enclosure voorkant"
+           onclick="openLightbox(this.src)" onerror="this.style.background='#ddd'"/>
     </div>
     <div class="side">
-      <img src="../images/custom-enclosure-2.jpg" alt="Detail" onclick="openLightbox(this.src)" onerror="this.style.background='#ddd'"/>
+      <img src="images/custom-enclosure-2.jpg" alt="Detail"
+           onclick="openLightbox(this.src)" onerror="this.style.background='#ddd'"/>
     </div>
     <div class="side">
-      <img src="../images/custom-enclosure-3.jpg" alt="Binnenkant" onclick="openLightbox(this.src)" onerror="this.style.background='#ddd'"/>
+      <img src="images/custom-enclosure-3.jpg" alt="Binnenkant"
+           onclick="openLightbox(this.src)" onerror="this.style.background='#ddd'"/>
     </div>
   </div>
+
+  <!--
+  ── Layout B: 3 gelijke kolommen ──
+  <div class="gallery-b">
+    <img src="images/foto-1.jpg" alt="" onclick="openLightbox(this.src)"/>
+    <img src="images/foto-2.jpg" alt="" onclick="openLightbox(this.src)"/>
+    <img src="images/foto-3.jpg" alt="" onclick="openLightbox(this.src)"/>
+  </div>
+
+  ── Layout C: 1 brede foto ──
+  <div class="gallery-c">
+    <img src="images/foto-1.jpg" alt="" onclick="openLightbox(this.src)"/>
+  </div>
+
+  ── Layout D: 2 gelijke kolommen ──
+  <div class="gallery-d">
+    <img src="images/foto-1.jpg" alt="" onclick="openLightbox(this.src)"/>
+    <img src="images/foto-2.jpg" alt="" onclick="openLightbox(this.src)"/>
+  </div>
+
+  ── YouTube video (vervang VIDEO_ID) ──
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+  </div>
+  -->
 </div>
 
+
+<!-- ═══════════════════════════════════════
+     STAP 4 — PROJECTBESCHRIJVING & SIDEBAR
+     ═══════════════════════════════════════ -->
 <div class="project-info">
+
+  <!-- LINKER KOLOM: uitgebreide tekst -->
   <div>
+
+    <!-- Sectie: Over dit project -->
     <div class="info-section">
       <span class="info-label" data-nl="Over dit project" data-en="About this project">Over dit project</span>
       <div class="info-body">
-        <p data-nl="Voor een van mijn Arduino-projecten had ik een nette behuizing nodig die zowel functioneel als goed uitziend was. In plaats van een standaard doos te kopen, besloot ik er een te ontwerpen die precies paste." data-en="For one of my Arduino projects I needed a clean housing that was both functional and good-looking. Instead of buying a standard box, I decided to design one that fit perfectly.">
+        <!-- Voeg zoveel <p> alinea's toe als je wilt. Beide talen invullen. -->
+        <p data-nl="Voor een van mijn Arduino-projecten had ik een nette behuizing nodig die zowel functioneel als goed uitziend was. In plaats van een standaard doos te kopen, besloot ik er een te ontwerpen die precies paste."
+           data-en="For one of my Arduino projects I needed a clean housing that was both functional and good-looking. Instead of buying a standard box, I decided to design one that fit perfectly.">
           Voor een van mijn Arduino-projecten had ik een nette behuizing nodig die zowel functioneel als goed uitziend was. In plaats van een standaard doos te kopen, besloot ik er een te ontwerpen die precies paste.
         </p>
-        <p data-nl="Het ontwerp is volledig parametrisch — dat betekent dat ik de afmetingen simpelweg kan aanpassen als er iets verandert aan de elektronica. Super handig voor toekomstige versies." data-en="The design is fully parametric — meaning I can simply adjust the dimensions if something changes on the electronics side. Super useful for future versions.">
+        <p data-nl="Het ontwerp is volledig parametrisch — dat betekent dat ik de afmetingen simpelweg kan aanpassen als er iets verandert aan de elektronica. Super handig voor toekomstige versies."
+           data-en="The design is fully parametric — meaning I can simply adjust the dimensions if something changes on the electronics side. Super useful for future versions.">
           Het ontwerp is volledig parametrisch — dat betekent dat ik de afmetingen simpelweg kan aanpassen als er iets verandert aan de elektronica. Super handig voor toekomstige versies.
         </p>
       </div>
     </div>
+
+    <!-- Sectie: Aanpak (stappen als lijst) -->
     <div class="info-section">
       <span class="info-label" data-nl="Aanpak" data-en="Approach">Aanpak</span>
       <div class="info-body">
+        <!-- Voeg <li> regels toe of verwijder ze -->
         <ul>
-          <li data-nl="Afmetingen opmeten van de elektronica" data-en="Measuring the dimensions of the electronics">Afmetingen opmeten van de elektronica</li>
-          <li data-nl="Parametrisch model bouwen in Fusion 360" data-en="Building a parametric model in Fusion 360">Parametrisch model bouwen in Fusion 360</li>
-          <li data-nl="Printen op de Bambu Lab X1 in PETG" data-en="Printing on the Bambu Lab X1 in PETG">Printen op de Bambu Lab X1 in PETG</li>
-          <li data-nl="Afwerken en testen" data-en="Finishing and testing">Afwerken en testen</li>
+          <li data-nl="Afmetingen opmeten van de elektronica"
+              data-en="Measuring the dimensions of the electronics">Afmetingen opmeten van de elektronica</li>
+          <li data-nl="Parametrisch model bouwen in Fusion 360"
+              data-en="Building a parametric model in Fusion 360">Parametrisch model bouwen in Fusion 360</li>
+          <li data-nl="Printen op de Bambu Lab X1 in PETG"
+              data-en="Printing on the Bambu Lab X1 in PETG">Printen op de Bambu Lab X1 in PETG</li>
+          <li data-nl="Afwerken en testen"
+              data-en="Finishing and testing">Afwerken en testen</li>
         </ul>
       </div>
     </div>
+
   </div>
+
+  <!-- RECHTER KOLOM: sidebar details -->
   <div>
+
+    <!-- Categorie -->
     <div class="sidebar-block">
       <span class="sidebar-label" data-nl="Categorie" data-en="Category">Categorie</span>
       <div class="sidebar-value">3D Printing</div>
     </div>
+
+    <!-- Materialen & Tools — voeg <span class="sidebar-tag"> toe per item -->
     <div class="sidebar-block">
       <span class="sidebar-label" data-nl="Materialen &amp; Tools" data-en="Materials &amp; Tools">Materialen &amp; Tools</span>
       <div class="sidebar-value">
@@ -142,21 +238,31 @@
         <span class="sidebar-tag">PETG</span>
       </div>
     </div>
+
+    <!-- Jaar -->
     <div class="sidebar-block">
       <span class="sidebar-label" data-nl="Jaar" data-en="Year">Jaar</span>
       <div class="sidebar-value">2025</div>
     </div>
+
+    <!-- Status -->
     <div class="sidebar-block">
       <span class="sidebar-label" data-nl="Status" data-en="Status">Status</span>
       <div class="sidebar-value" data-nl="Afgerond" data-en="Completed">Afgerond</div>
     </div>
+
+    <!-- Externe link — verwijder dit blok als je het niet nodig hebt -->
     <div class="sidebar-block">
       <span class="sidebar-label">MakerWorld</span>
-      <a href="https://makerworld.com/@TooMuchESP" target="_blank" style="color:var(--accent);font-size:.84rem;text-decoration:none;">@TooMuchESP ↗</a>
+      <a href="https://makerworld.com/@TooMuchESP" target="_blank"
+         style="color:var(--accent);font-size:.84rem;text-decoration:none;">@TooMuchESP ↗</a>
     </div>
+
   </div>
 </div>
 
+
+<!-- Lightbox — niet aanpassen -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close">×</button>
   <img id="lightboxImg" src="" alt=""/>
@@ -164,7 +270,7 @@
 
 <footer>
   <p>© 2026 Tom Damhof <span style="color:var(--accent)">·</span> Maker Portfolio</p>
-  <p><a href="../index.html" data-nl="← Terug naar portfolio" data-en="← Back to portfolio">← Terug naar portfolio</a></p>
+  <p><a href="index.html" data-nl="← Terug naar portfolio" data-en="← Back to portfolio">← Terug naar portfolio</a></p>
 </footer>
 
 <script>
