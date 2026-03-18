@@ -412,25 +412,38 @@
 
   // ── Build one card element ───────────────────────────────────
   function createCard(p) {
-    const desc    = (currentLang === 'en' && p.description_en) ? p.description_en : p.description;
+    const title = Array.isArray(p.title)
+      ? (currentLang === 'en' ? p.title[1] : p.title[0])
+      : p.title;
+  
+    const desc = Array.isArray(p.description)
+      ? (currentLang === 'en' ? p.description[1] : p.description[0])
+      : p.description;
+  
     const tags    = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
     const tagHtml = tags.join(' · ');
-    const thumb   = p.thumb
-      ? `<img src="${p.thumb}" alt="${p.title}" class="card-thumb" onerror="this.outerHTML='<div class=\\'card-thumb-placeholder\\'>NO IMAGE</div>'">`
+  
+    const thumb = p.thumb
+      ? `<img src="${p.thumb}" alt="${title}" class="card-thumb"
+           onerror="this.outerHTML='<div class=\\'card-thumb-placeholder\\'>NO IMAGE</div>'">`
       : `<div class="card-thumb-placeholder">NO IMAGE</div>`;
-
+  
     const a = document.createElement('a');
     a.href      = p.file || '#';
     a.className = 'project-card';
+  
     a.innerHTML = `
       ${thumb}
       <div class="card-tag">${tagHtml}</div>
-      <div class="card-title">${p.title}</div>
+      <div class="card-title">${title}</div>
       <div class="card-desc">${desc}</div>
       <div class="card-year">${p.year || ''}</div>
-      <span class="card-arrow">↗</span>`;
+      <span class="card-arrow">↗</span>
+    `;
+  
     return a;
   }
+
 
   // ── Counter label ────────────────────────────────────────────
   function updateCount(n) {
