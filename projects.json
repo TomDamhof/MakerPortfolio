@@ -20,22 +20,21 @@
     ]
   },{
     "id": "project-2",
-    "file": "projects/CustomEncolosure.html",
-    "title": { "nl": "Mijn Project", "en": "My Project" },
-    "description": { "nl": "Beschrijving", "en": "Description" },
+    "file": "projects/template.html?id=project-2",
+    "title": { "nl": "Mijn 2e Project", "en": "My 2e Project" },
+    "description": { "nl": "borte Beschrijving bla bla bal", "en": "borte Beschrijving bla bla bal maar in het engels" },
     "categorie": { "nl": "3D Printing", "en": "3D Printing" },
     "status": { "nl": "Afgerond", "en": "Completed" },
     "aanpak": {
-      "nl": ["Stap 1", "Stap 2"],
-      "en": ["Step 1", "Step 2"]
+      "nl": ["Stap 1", "Stap 2","step 3", "step 4"],
+      "en": ["Step 1", "Step 2","step 3", "step 4"]
     },
-    "tags": ["Fusion 360", "PETG"],
-    "year": "2024",
+    "tags": ["Fusion 360", "esp32"],
+    "year": "2026",
     "thumb": "images/custom-enclosure-thumb.jpg",
     "images": [
       "images/custom-enclosure-thumb.jpg",
-      "images/foto-2.jpg",
-      "images/foto-3.jpg"
+      "images/foto-2.jpg"
     ]
   }
 ]
