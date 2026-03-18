@@ -24,7 +24,7 @@
         "Code schrijven in Arduino IDE",
         "3D model maken in Fusion 360",
         "Onderdelen uitprinten in PLA",
-        "Alles samenbouwen",
+        "Elektronica en behuizing samenbouwen",
         "Bugs oplossen",
         "Video opnemen en editen"
       ],
@@ -34,7 +34,7 @@
         "Writing code in Arduino IDE",
         "Creating a 3D model in Fusion 360",
         "Printing parts in PLA",
-        "Assembling everything",
+        "Alles samenbouwen",
         "Debugging and fixing issues",
         "Recording and editing the video"
       ]
@@ -43,11 +43,14 @@
     "year": "2024",
     "thumb": "images/custom-enclosure-thumb.jpg",
     "images": [
-      "images/custom-enclosure-1.jpg",
-      "images/custom-enclosure-2.jpg",
-      "images/custom-enclosure-3.jpg"
+      "images/subscriber-counter-1.jpg",
+      "images/subscriber-counter-2.jpg",
+      "images/subscriber-counter-3.jpg"
     ]
   },
+
+
+  
   {
     "id": "project-2",
     "file": "projects/template.html?id=project-2",
