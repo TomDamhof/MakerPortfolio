@@ -9,7 +9,7 @@
     "description": {"nl": "Een live-updatende YouTube-abonnees- en weergaveteller die automatisch de helderheid aanpast aan de omgeving.",
     "en": "A live-updating YouTube subscriber and view counter that automatically adjusts its brightness to the surroundings."
     },
-    "about": {"nl": "Een live-updatende YouTube-abonnees- en weergaveteller die automatisch de helderheid aanpast aan de omgeving.",
+    "about": {"nl": "Met dit proiekt ben ik begongen youbute vidios te maken. ",
     "en": "A live-updating YouTube subscriber and view counter that automatically adjusts its brightness to the surroundings."
     },
     "categorie": {
@@ -44,11 +44,8 @@
     },
     "tags": ["3D cad", "Electronics", "Arduino", "Code", "Video"],
     "links": {
-      "youtube": "https://youtube.com/@toomuchesp",
-      "makerworld": "https://makerworld.com/@TooMuchESP",
-      "github": "https://github.com/TomDamhof/project",
-      "instagram": "https://instagram.com/toomuchesp",
-      "printables": "https://www.printables.com/user/tomdamhof"
+      "youtube": "https://youtu.be/LdAyR4mhC-g?si=eDd-XRKiIevdDmhS",
+      "Heise online": "https://www.heise.de/ratgeber/Bastelprojekt-mit-ESP32-Abonnentenzaehler-fuer-Youtube-bauen-9983037.html"
     },
     "year": "2024",
     "thumb": "images/custom-enclosure-thumb.jpg",
