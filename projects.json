@@ -1,6 +1,6 @@
 [
   {
-    "file": "projects/template.html",
+    "file": "projects/template.html?id=project-1",
     "id": "project-1",
     "title": { "nl": "Mijn Project", "en": "My Project" },
     "description": { "nl": "Beschrijving", "en": "Description" },
