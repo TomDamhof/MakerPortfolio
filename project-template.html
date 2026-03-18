@@ -267,14 +267,15 @@
     </div>
 
     <div class="sidebar-block">
-      <span class="sidebar-label" data-nl="Materialen &amp; Tools" data-en="Materials &amp; Tools">Materialen &amp; Tools</span>
-      <!-- ← EDIT: Voeg tags toe voor elk materiaal/tool → -->
-      <div class="sidebar-value">
-        <span class="sidebar-tag">Fusion 360</span>
-        <span class="sidebar-tag">PETG</span>
-        <span class="sidebar-tag">Bambu Lab</span>
+      <span class="sidebar-label" data-nl="Materialen & Tools" data-en="Materials & Tools">
+        Materialen & Tools
+      </span>
+    
+      <div class="sidebar-value" id="materialsContainer">
+        <!-- Wordt dynamisch gevuld -->
       </div>
     </div>
+
 
     <div class="sidebar-block">
       <span class="sidebar-label" data-nl="Jaar" data-en="Year">Jaar</span>
@@ -315,16 +316,26 @@
 <script>
   // Cursor
   const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
+  document.addEventListener('mousemove', e=>{
+    cursor.style.left=e.clientX+'px';
+    cursor.style.top=e.clientY+'px';
+  });
   document.querySelectorAll('a,button,img').forEach(el=>{
     el.addEventListener('mouseenter',()=>cursor.classList.add('big'));
     el.addEventListener('mouseleave',()=>cursor.classList.remove('big'));
   });
 
   // Lightbox
-  function openLightbox(src){ document.getElementById('lightboxImg').src=src; document.getElementById('lightbox').classList.add('open'); }
-  function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
+  function openLightbox(src){
+    document.getElementById('lightboxImg').src=src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape') closeLightbox();
+  });
 
   // Language toggle
   let lang='nl';
@@ -337,6 +348,65 @@
       if(txt) el.innerHTML=txt;
     });
   }
+
+  // 🔹 Render tags in sidebar
+  function renderMaterials(project) {
+    const container = document.getElementById('materialsContainer');
+    container.innerHTML = '';
+
+    const tags = Array.isArray(project.tags) 
+      ? project.tags 
+      : (project.tag ? [project.tag] : []);
+
+    tags.forEach(tag => {
+      const span = document.createElement('span');
+      span.className = 'sidebar-tag';
+      span.textContent = tag.trim();
+      container.appendChild(span);
+    });
+  }
+
+  // 🔥 NIEUW: laad project data uit JSON
+  async function loadProjectData() {
+    try {
+      const res = await fetch('../projects.json');
+      const projects = await res.json();
+
+      // huidige bestandsnaam pakken
+      const path = window.location.pathname;
+      const currentFile = path.substring(path.lastIndexOf('/') + 1);
+
+      // match zoeken
+      const project = projects.find(p => 
+        p.file.toLowerCase().includes(currentFile.toLowerCase())
+      );
+
+      if (!project) return;
+
+      // 🔹 Sidebar tags vullen
+      renderMaterials(project);
+
+      // 🔹 Titel vullen
+      const titleEl = document.querySelector('.project-title');
+      if (titleEl) titleEl.innerHTML = project.title;
+
+      // 🔹 Beschrijving vullen
+      const summaryEl = document.querySelector('.project-summary');
+      if (summaryEl) summaryEl.innerHTML = project.description;
+
+      // 🔹 Jaar vullen
+      const yearEl = document.querySelector('.project-year');
+      if (yearEl) yearEl.textContent = project.year;
+
+    } catch (e) {
+      console.error('Kon project niet laden', e);
+    }
+  }
+
+  // 🚀 run bij laden
+  loadProjectData();
+
 </script>
+
 </body>
 </html>
