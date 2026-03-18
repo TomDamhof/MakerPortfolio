@@ -2,40 +2,80 @@
   {
     "id": "project-1",
     "file": "projects/template.html?id=project-1",
-    "title": { "nl": "Mijn Project", "en": "My Project" },
-    "description": { "nl": "Beschrijving", "en": "Description" },
-    "categorie": { "nl": "3D Printing", "en": "3D Printing" },
-    "status": { "nl": "Afgerond", "en": "Completed" },
-    "aanpak": {
-      "nl": ["Stap 1", "Stap 2"],
-      "en": ["Step 1", "Step 2"]
+    "title": {
+      "nl": "Custom 3D Printer Enclosure",
+      "en": "Custom 3D Printer Enclosure"
     },
-    "tags": ["Fusion 360", "PETG"],
+    "description": {"nl": "Een geïsoleerde behuizing voor mijn 3D printer met temperatuurbeheer en luchtfiltering.",
+    "en": "An insulated enclosure for my 3D printer with temperature control and air filtering."
+    },
+    "categorie": {
+      "nl": "3D Printing",
+      "en": "3D Printing"
+    },
+    "status": {
+      "nl": "Afgerond",
+      "en": "Completed"
+    },
+    "aanpak": {
+      "nl": [
+        "Ontwerp in Fusion 360 met interne componenten",
+        "3D printen van onderdelen in PETG",
+        "Assemblage en integratie elektronica"
+      ],
+      "en": [
+        "Design in Fusion 360 with internal components",
+        "3D printing parts in PETG",
+        "Assembly and electronics integration"
+      ]
+    },
+    "tags": ["Fusion 360", "PETG", "Electronics", "3D Printing"],
     "year": "2024",
     "thumb": "images/custom-enclosure-thumb.jpg",
     "images": [
-      "images/custom-enclosure-thumb.jpg",
-      "images/foto-2.jpg",
-      "images/foto-3.jpg"
+      "images/custom-enclosure-1.jpg",
+      "images/custom-enclosure-2.jpg",
+      "images/custom-enclosure-3.jpg"
     ]
-  },{
+  },
+  {
     "id": "project-2",
     "file": "projects/template.html?id=project-2",
-    "title": { "nl": "Mijn 2e Project", "en": "My 2e Project" },
-    "description": { "nl": "borte Beschrijving bla bla bal", "en": "borte Beschrijving bla bla bal maar in het engels" },
-    "categorie": { "nl": "3D Printing", "en": "3D Printing" },
-    "status": { "nl": "Afgerond", "en": "Completed" },
-    "aanpak": {
-      "nl": ["Stap 1", "Stap 2","step 3", "step 4"],
-      "en": ["Step 1", "Step 2","step 3", "step 4"]
+    "title": {
+      "nl": "LED Strip Controller",
+      "en": "LED Strip Controller"
     },
-    "tags": ["Fusion 360", "esp32"],
-    "year": "2026",
-    "thumb": "images/custom-enclosure-thumb.jpg",
+    "description": {
+      "nl": "Een Arduino-gebaseerde controller voor adresseerbare LED strips met app besturing.",
+      "en": "An Arduino-based controller for addressable LED strips with app control."
+    },
+    "categorie": {
+      "nl": "Electronics",
+      "en": "Electronics"
+    },
+    "status": {
+      "nl": "Doorlopend",
+      "en": "In Progress"
+    },
+    "aanpak": {
+      "nl": [
+        "Arduino programmeren in C++",
+        "LED strip driver circuit ontwerpen",
+        "Mobile app integratie"
+      ],
+      "en": [
+        "Program Arduino in C++",
+        "Design LED strip driver circuit",
+        "Mobile app integration"
+      ]
+    },
+    "tags": ["Arduino", "Electronics", "C++"],
+    "year": "2025",
+    "thumb": "images/led-controller-thumb.jpg",
     "images": [
-      "images/custom-enclosure-thumb.jpg",
-      "images/foto-2.jpg",
-      "images/foto-3.jpg"
+      "images/led-controller-1.jpg",
+      "images/led-controller-2.jpg",
+      "images/led-controller-3.jpg"
     ]
   }
 ]
