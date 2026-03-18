@@ -1,5 +1,5 @@
 [
-  {
+  {//-------------------------------------------------
     "id": "project-1",
     "file": "projects/template.html?id=project-1",
     "title": {
@@ -37,7 +37,7 @@
       "images/custom-enclosure-2.jpg",
       "images/custom-enclosure-3.jpg"
     ]
-  },
+  },//-------------------------------------------------
   {
     "id": "project-2",
     "file": "projects/template.html?id=project-2",
@@ -77,5 +77,5 @@
       "images/led-controller-2.jpg",
       "images/led-controller-3.jpg"
     ]
-  }
+  }//-------------------------------------------------
 ]
