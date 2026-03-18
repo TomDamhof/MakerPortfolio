@@ -64,13 +64,13 @@
 
     /* loading state */
     .projects-loading{grid-column:1/-1;padding:3rem;text-align:center;color:rgba(255,255,255,.3);font-size:.8rem;letter-spacing:.08em}
-    
+
     /* FILTER */
     .filter-bar{margin-bottom:2rem}
     .filter-select{appearance:none;background:rgba(255,255,255,.06);color:var(--bg);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:.65rem 2.8rem .65rem 1rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:none;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center}
     .filter-select:focus{outline:none;border-color:rgba(255,255,255,.3)}
     .filter-select option{background:#111110;color:#f9f8f6}
-    
+
     .project-card{background:var(--fg);padding:2.4rem;position:relative;overflow:hidden;transition:background .3s;cursor:none;text-decoration:none;color:inherit;display:block}
     .project-card:hover{background:#1b1b1a}
     .project-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
@@ -104,6 +104,10 @@
     /* ANIMATIONS */
     @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes cardOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(16px)}}
+    .card-animate-in{animation:cardIn .35s ease forwards}
+    .card-animate-out{animation:cardOut .25s ease forwards}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
     .reveal.visible{opacity:1;transform:none}
 
@@ -232,11 +236,11 @@
       </div>
       <span class="project-count" id="projCount">— projecten</span>
     </div>
-      <div class="filter-bar">
-        <select class="filter-select" id="filterSelect" onchange="filterProjects()">
-          <option value="" data-nl="Alle categorieën" data-en="All categories">Alle categorieën</option>
-        </select>
-      </div>
+    <div class="filter-bar">
+      <select class="filter-select" id="filterSelect" onchange="filterProjects()">
+        <option value="" data-nl="Alle categorieën" data-en="All categories">Alle categorieën</option>
+      </select>
+    </div>
     <div class="projects-grid" id="projectsGrid">
       <div class="projects-loading">Projecten laden...</div>
     </div>
@@ -277,13 +281,11 @@
 
 <footer>
   <p>
-    © 2026 Tom Damhof 
-    <span class="footer-dot">·</span> 
+    © 2026 Tom Damhof
+    <span class="footer-dot">·</span>
     <span data-nl="Maker Portfolio" data-en="Maker Portfolio">Maker Portfolio</span>
     <span class="footer-dot">·</span>
-    <span data-nl="Website gemaakt met hulp van AI" data-en="Website made with help of AI">
-      Website made with help of AI
-    </span>
+    <span data-nl="Website gemaakt met hulp van AI" data-en="Website made with help of AI">Website gemaakt met hulp van AI</span>
   </p>
 </footer>
 
@@ -309,6 +311,8 @@
   let currentLang = 'nl';
   let allProjects = [];
   let activeFilter = '';
+  const ROWS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
+  let visibleStep = 0;
 
   async function loadProjects(){
     const grid = document.getElementById('projectsGrid');
@@ -340,47 +344,46 @@
     addHover(select);
   }
 
-function filterProjects(){
-  activeFilter = document.getElementById('filterSelect').value;
-  visibleStep = 0;
-  renderProjects();
-}
+  function filterProjects(){
+    activeFilter = document.getElementById('filterSelect').value;
+    visibleStep = 0;
+    renderProjects();
+  }
 
-  const ROWS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
-  let visibleStep = 0;
-  
   function renderProjects(){
     const grid = document.getElementById('projectsGrid');
     const countEl = document.getElementById('projCount');
-  
+
     const filtered = activeFilter
       ? allProjects.filter(p => {
           const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
           return tags.map(t=>t.trim()).includes(activeFilter);
         })
       : allProjects;
-  
+
     const n = filtered.length;
     const countNl = String(n).padStart(2,'0') + (n===1?' project':' projecten');
     const countEn = String(n).padStart(2,'0') + (n===1?' project':' projects');
     countEl.textContent = currentLang==='nl' ? countNl : countEn;
     countEl.setAttribute('data-nl', countNl);
     countEl.setAttribute('data-en', countEn);
-  
+
     if(n===0){ grid.innerHTML='<div class="projects-loading">Geen projecten gevonden.</div>'; renderShowMore(0,0); return; }
-  
+
     const maxVisible = ROWS[Math.min(visibleStep, ROWS.length-1)];
+    const prevCount = grid.querySelectorAll('.project-card').length;
     const visible = filtered.slice(0, maxVisible);
-  
-    grid.innerHTML = visible.map(p => {
+
+    grid.innerHTML = visible.map((p, i) => {
       const desc = (currentLang==='en' && p.description_en) ? p.description_en : p.description;
       const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
       const tagHtml = tags.join(' · ');
       const thumb = p.thumb
         ? `<img src="${p.thumb}" alt="${p.title}" class="card-thumb" onerror="this.outerHTML='<div class=\\'card-thumb-placeholder\\'>NO IMAGE</div>'">`
         : `<div class="card-thumb-placeholder">NO IMAGE</div>`;
+      const isNew = i >= prevCount;
       return `
-        <a href="${p.file}" class="project-card reveal">
+        <a href="${p.file}" class="project-card reveal ${isNew ? 'card-animate-in' : ''}">
           ${thumb}
           <div class="card-tag">${tagHtml}</div>
           <div class="card-title">${p.title}</div>
@@ -389,50 +392,55 @@ function filterProjects(){
           <span class="card-arrow">↗</span>
         </a>`;
     }).join('');
-  
+
     document.querySelectorAll('.project-card').forEach(addHover);
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  
+
     renderShowMore(filtered.length, maxVisible);
   }
-  
+
   function renderShowMore(total, shown){
-  let btn = document.getElementById('showMoreBtn');
-  if(!btn){
-    btn = document.createElement('div');
-    btn.id = 'showMoreBtn';
-    btn.style.cssText = 'text-align:center;margin-top:2rem;display:flex;gap:1rem;justify-content:center;';
-    document.getElementById('projectsGrid').after(btn);
-  }
-  btn.innerHTML = '';
+    let btn = document.getElementById('showMoreBtn');
+    if(!btn){
+      btn = document.createElement('div');
+      btn.id = 'showMoreBtn';
+      btn.style.cssText = 'text-align:center;margin-top:2rem;display:flex;gap:1rem;justify-content:center;';
+      document.getElementById('projectsGrid').after(btn);
+    }
+    btn.innerHTML = '';
 
-  const btnStyle = 'background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.7rem 2rem;font-family:\'DM Mono\',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:color .2s,border-color .2s;';
+    const btnStyle = 'background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.7rem 2rem;font-family:\'DM Mono\',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:color .2s,border-color .2s;';
 
-  if(shown < total){
-    const meerLabel = currentLang==='nl' ? 'Meer zien' : 'Show more';
-    const meer = document.createElement('button');
-    meer.textContent = meerLabel;
-    meer.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.4);');
-    meer.onmouseenter = () => { meer.style.color='#fff'; meer.style.borderColor='rgba(255,255,255,.4)'; };
-    meer.onmouseleave = () => { meer.style.color='rgba(255,255,255,.4)'; meer.style.borderColor='rgba(255,255,255,.15)'; };
-    meer.onclick = () => showMore();
-    addHover(meer);
-    btn.appendChild(meer);
+    if(shown < total){
+      const meerLabel = currentLang==='nl' ? 'Meer zien' : 'Show more';
+      const meer = document.createElement('button');
+      meer.textContent = meerLabel;
+      meer.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.4);');
+      meer.onmouseenter = () => { meer.style.color='#fff'; meer.style.borderColor='rgba(255,255,255,.4)'; };
+      meer.onmouseleave = () => { meer.style.color='rgba(255,255,255,.4)'; meer.style.borderColor='rgba(255,255,255,.15)'; };
+      meer.onclick = () => showMore();
+      addHover(meer);
+      btn.appendChild(meer);
+    }
+
+    if(visibleStep > 0){
+      const minderLabel = currentLang==='nl' ? 'Minder zien' : 'Show less';
+      const minder = document.createElement('button');
+      minder.textContent = minderLabel;
+      minder.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.2);');
+      minder.onmouseenter = () => { minder.style.color='#fff'; minder.style.borderColor='rgba(255,255,255,.4)'; };
+      minder.onmouseleave = () => { minder.style.color='rgba(255,255,255,.2)'; minder.style.borderColor='rgba(255,255,255,.15)'; };
+      minder.onclick = () => showLess();
+      addHover(minder);
+      btn.appendChild(minder);
+    }
   }
 
-  if(visibleStep > 0){
-    const minderLabel = currentLang==='nl' ? 'Minder zien' : 'Show less';
-    const minder = document.createElement('button');
-    minder.textContent = minderLabel;
-    minder.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.2);');
-    minder.onmouseenter = () => { minder.style.color='#fff'; minder.style.borderColor='rgba(255,255,255,.4)'; };
-    minder.onmouseleave = () => { minder.style.color='rgba(255,255,255,.2)'; minder.style.borderColor='rgba(255,255,255,.15)'; };
-    minder.onclick = () => showLess();
-    addHover(minder);
-    btn.appendChild(minder);
+  function showMore(){
+    visibleStep = Math.min(visibleStep + 1, ROWS.length - 1);
+    renderProjects();
   }
-}
-  
+
   function showLess(){
     visibleStep = Math.max(visibleStep - 1, 0);
     renderProjects();
