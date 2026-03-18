@@ -346,7 +346,7 @@ function filterProjects(){
   renderProjects();
 }
 
-  const ROWS = [3, 6, 12, 21]; // max zichtbaar per stap: 1x3, 2x3, 4x3, 7x3
+  const ROWS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
   let visibleStep = 0;
   
   function renderProjects(){
@@ -397,24 +397,44 @@ function filterProjects(){
   }
   
   function renderShowMore(total, shown){
-    let btn = document.getElementById('showMoreBtn');
-    if(!btn){
-      btn = document.createElement('div');
-      btn.id = 'showMoreBtn';
-      btn.style.cssText = 'text-align:center;margin-top:2rem;';
-      document.getElementById('projectsGrid').after(btn);
-    }
-    if(shown >= total){
-      btn.innerHTML = '';
-      return;
-    }
-    const label = currentLang==='nl' ? 'Meer zien' : 'Show more';
-    btn.innerHTML = `<button onclick="showMore()" style="background:transparent;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.7rem 2rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.4)'" onmouseleave="this.style.color='rgba(255,255,255,.4)';this.style.borderColor='rgba(255,255,255,.15)'">${label}</button>`;
-    addHover(btn.querySelector('button'));
+  let btn = document.getElementById('showMoreBtn');
+  if(!btn){
+    btn = document.createElement('div');
+    btn.id = 'showMoreBtn';
+    btn.style.cssText = 'text-align:center;margin-top:2rem;display:flex;gap:1rem;justify-content:center;';
+    document.getElementById('projectsGrid').after(btn);
   }
+  btn.innerHTML = '';
+
+  const btnStyle = 'background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.7rem 2rem;font-family:\'DM Mono\',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:color .2s,border-color .2s;';
+
+  if(shown < total){
+    const meerLabel = currentLang==='nl' ? 'Meer zien' : 'Show more';
+    const meer = document.createElement('button');
+    meer.textContent = meerLabel;
+    meer.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.4);');
+    meer.onmouseenter = () => { meer.style.color='#fff'; meer.style.borderColor='rgba(255,255,255,.4)'; };
+    meer.onmouseleave = () => { meer.style.color='rgba(255,255,255,.4)'; meer.style.borderColor='rgba(255,255,255,.15)'; };
+    meer.onclick = () => showMore();
+    addHover(meer);
+    btn.appendChild(meer);
+  }
+
+  if(visibleStep > 0){
+    const minderLabel = currentLang==='nl' ? 'Minder zien' : 'Show less';
+    const minder = document.createElement('button');
+    minder.textContent = minderLabel;
+    minder.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.2);');
+    minder.onmouseenter = () => { minder.style.color='#fff'; minder.style.borderColor='rgba(255,255,255,.4)'; };
+    minder.onmouseleave = () => { minder.style.color='rgba(255,255,255,.2)'; minder.style.borderColor='rgba(255,255,255,.15)'; };
+    minder.onclick = () => showLess();
+    addHover(minder);
+    btn.appendChild(minder);
+  }
+}
   
-  function showMore(){
-    visibleStep = Math.min(visibleStep + 1, ROWS.length - 1);
+  function showLess(){
+    visibleStep = Math.max(visibleStep - 1, 0);
     renderProjects();
   }
 
