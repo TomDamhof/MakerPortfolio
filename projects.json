@@ -1,7 +1,7 @@
 [
   {
-    "id": "Subscriber Counter",
-    "file": "projects/template.html?id=project-1",
+    "id": "Subscriber-Counter",
+    "file": "projects/template.html?id=Subscriber-Counter",
     "title": {
       "nl": "Subscriber Counter",
       "en": "Subscriber Counter"
