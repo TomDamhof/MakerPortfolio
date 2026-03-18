@@ -329,26 +329,27 @@
   // PROJECT RENDEREN
   // ═══════════════════════════════════════════════════════════
   function renderProject(project) {
-    const t = lang === 'nl' ? 0 : 1;
+    // Get text in current language (object met nl/en keys)
+    const getText = (obj) => obj[lang] || obj.nl || obj.en || '';
 
     // HEADER
-    document.getElementById('projectTitle').innerHTML = project.title[t];
-    document.getElementById('projectCategory').textContent = project.categorie[t];
+    document.getElementById('projectTitle').innerHTML = getText(project.title);
+    document.getElementById('projectCategory').textContent = getText(project.categorie);
     document.getElementById('projectYear').textContent = project.year;
-    document.getElementById('projectDescription').textContent = project.description[t];
+    document.getElementById('projectDescription').textContent = getText(project.description);
 
     // SIDEBAR
-    document.getElementById('sidebarCategory').textContent = project.categorie[t];
+    document.getElementById('sidebarCategory').textContent = getText(project.categorie);
     document.getElementById('sidebarYear').textContent = project.year;
-    document.getElementById('sidebarStatus').textContent = project.status[t];
+    document.getElementById('sidebarStatus').textContent = getText(project.status);
 
-    // BESCHRIJVING (zelfde als description, kan je hier uitbreiden)
-    document.getElementById('projectFullDescription').innerHTML = '<p>' + project.description[t] + '</p>';
+    // BESCHRIJVING
+    document.getElementById('projectFullDescription').innerHTML = '<p>' + getText(project.description) + '</p>';
 
     // MATERIALEN TAGS
     const matContainer = document.getElementById('materialsContainer');
     matContainer.innerHTML = '';
-    if (project.tags) {
+    if (project.tags && Array.isArray(project.tags)) {
       project.tags.forEach(tag => {
         const span = document.createElement('span');
         span.className = 'sidebar-tag';
@@ -360,16 +361,19 @@
     // AANPAK LIJST
     const aanpakList = document.getElementById('aanpakList');
     aanpakList.innerHTML = '';
-    if (project.aanpak && project.aanpak[t]) {
-      project.aanpak[t].forEach(step => {
-        const li = document.createElement('li');
-        li.textContent = step;
-        aanpakList.appendChild(li);
-      });
+    if (project.aanpak) {
+      const steps = project.aanpak[lang] || project.aanpak.nl || [];
+      if (Array.isArray(steps)) {
+        steps.forEach(step => {
+          const li = document.createElement('li');
+          li.textContent = step;
+          aanpakList.appendChild(li);
+        });
+      }
     }
 
     // AFBEELDINGEN
-    if (project.images && project.images.length) {
+    if (project.images && Array.isArray(project.images) && project.images.length > 0) {
       if (project.images[0]) {
         document.getElementById('heroImage').src = '../' + project.images[0];
         document.getElementById('img-1').src = '../' + project.images[0];
