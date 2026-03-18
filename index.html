@@ -424,7 +424,7 @@
     }
 
     if(visibleStep > 0){
-      const minderLabel = currentLang==='nl' ? 'Minder zien' : 'Show less';
+      const minderLabel = currentLang==='nl' ? 'Minder zien' : 'Collapse';
       const minder = document.createElement('button');
       minder.textContent = minderLabel;
       minder.setAttribute('style', btnStyle + 'color:rgba(255,255,255,.2);');
@@ -442,7 +442,7 @@
   }
 
   function showLess(){
-    visibleStep = Math.max(visibleStep - 1, 0);
+    visibleStep = 0;
     renderProjects();
   }
 
