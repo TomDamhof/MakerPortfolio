@@ -6,14 +6,10 @@
       "nl": "Subscriber Counter",
       "en": "Subscriber Counter"
     },
-    "description": {"nl": "Dit was de eerste YouTube-video die ik heb gemaakt. Later heb ik ook de kans gekregen om over dit project een artikel te schrijven in het Duitse blad Heise Online.
-Deze subscriber counter bestaat uit een ESP32 met een LCD-display en een LDR om de helderheid van het display aan te passen aan de omgeving. De gegevens van het YouTube-account haalt hij via Google Cloud API’s op om deze vervolgens weer te geven.
-De behuizing is gemodelleerd in Fusion 360 en uitgeprint op een Elegoo Neptune 4 Plus 3D-printer.
-",
-    "en": "This was the first YouTube video I made. Later, I also had the opportunity to write an article about this project for the German publication Heise Online.
-This subscriber counter consists of an ESP32 with an LCD display and an LDR to adjust the brightness of the display to its surroundings. It retrieves the data from the YouTube account via Google Cloud APIs and displays it.
-The enclosure was modeled in Fusion 360 and printed on an Elegoo Neptune 4 Plus 3D printer.
-"
+    "description": {
+      "nl": "Dit was de eerste YouTube-video die ik heb gemaakt. Later heb ik ook de kans gekregen om over dit project een artikel te schrijven in het Duitse blad Heise Online.\nDeze subscriber counter bestaat uit een ESP32 met een LCD-display en een LDR om de helderheid van het display aan te passen aan de omgeving. De gegevens van het YouTube-account haalt hij via Google Cloud API’s op om deze vervolgens weer te geven.\nDe behuizing is gemodelleerd in Fusion 360 en uitgeprint op een Elegoo Neptune 4 Plus 3D-printer.",
+      "en": "This was the first YouTube video I made. Later, I also had the opportunity to write an article about this project for the German publication Heise Online.\nThis subscriber counter consists of an ESP32 with an LCD display and an LDR to adjust the brightness of the display to its surroundings. It retrieves the data from the YouTube account via Google Cloud APIs and displays it.\nThe enclosure was modeled in Fusion 360 and printed on an Elegoo Neptune 4 Plus 3D printer."
+    }
     },
     "about": {"nl": "Met dit proiekt ben ik begongen youbute vidios te maken. ",
     "en": "A live-updating YouTube subscriber and view counter that automatically adjusts its brightness to the surroundings."
