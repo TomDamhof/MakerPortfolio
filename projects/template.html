@@ -50,6 +50,10 @@
     .project-title em{font-style:italic;color:var(--accent)}
     .project-summary{color:var(--muted);font-size:.9rem;max-width:65ch;margin-bottom:1rem;line-height:1.85}
 
+    /* HERO IMAGE */
+    .hero-image-wrap{max-width:1200px;margin:0 auto;padding:0 3rem 4rem}
+    .hero-image-wrap img{width:100%;max-height:560px;object-fit:cover;border-radius:12px;display:block}
+
     /* GALLERY */
     .gallery-section{max-width:1200px;margin:0 auto;padding:0 3rem 5rem}
     .section-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem;display:block}
@@ -88,6 +92,14 @@
     .sidebar-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
     .sidebar-value{font-size:.84rem;color:var(--fg);line-height:1.7}
     .sidebar-tag{display:inline-block;background:var(--fg);color:var(--bg);font-size:.68rem;padding:.2rem .65rem;border-radius:4px;margin:.2rem .2rem 0 0;letter-spacing:.06em}
+
+    /* PROJECT ABOUT TEXT */
+    #projectAbout{overflow:hidden}
+    #projectAbout p{margin-bottom:.9rem;transition:max-height .3s}
+    #projectAbout.collapsed{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .read-more-btn{display:none;margin-top:.5rem;background:none;border:none;color:var(--accent);font-size:.8rem;cursor:none;text-decoration:underline;padding:0;font-family:'DM Mono',monospace;transition:opacity .2s}
+    .read-more-btn:hover{opacity:.8}
+    #projectAbout.collapsed ~ .read-more-btn{display:inline-block}
 
     /* FOOTER */
     footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between}
@@ -144,22 +156,15 @@
   <p class="project-summary" id="projectDescription">Korte beschrijving van je project in het Nederlands.</p>
 </div>
 
+<!-- HERO IMAGE -->
+<div class="hero-image-wrap">
+  <img id="heroImage" src="../images/jouw-project-hero.jpg" alt="Project naam" onerror="this.parentElement.style.display='none'"/>
+</div>
+
 <!-- GALLERY -->
 <div class="gallery-section">
   <span class="section-label" data-nl="Foto's" data-en="Photos">Foto's</span>
-
-  <!-- LAYOUT A: 1 grote links + 2 kleine rechts (aanbevolen) -->
-  <div class="gallery-a">
-    <div class="main">
-      <img id="img-1" src="../images/foto-1.jpg" alt="Foto 1" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
-    </div>
-    <div class="side">
-      <img id="img-2" src="../images/foto-2.jpg" alt="Foto 2" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
-    </div>
-    <div class="side">
-      <img id="img-3" src="../images/foto-3.jpg" alt="Foto 3" onclick="openLightbox(this.src)" onerror="this.style.background='#e8e6e2'"/>
-    </div>
-  </div>
+  <div id="galleryContainer"></div>
 </div>
 
 <!-- PROJECT INFO -->
@@ -169,9 +174,12 @@
   <div>
     <div class="info-section">
       <span class="info-label" data-nl="Over dit project" data-en="About this project">Over dit project</span>
-      <div class="info-body" id="projectAbout">
+      <div class="info-body" id="projectAbout" class="collapsed">
         <p>Beschrijf hier je project uitgebreid. Waarom heb je het gemaakt? Wat was het doel?</p>
       </div>
+      <button class="read-more-btn" id="readMoreBtn" onclick="toggleReadMore()">
+        <span data-nl="Lees meer..." data-en="Read more...">Lees meer...</span>
+      </button>
     </div>
 
     <div class="info-section">
@@ -329,6 +337,10 @@
 
     // BESCHRIJVING
     document.getElementById('projectAbout').innerHTML = '<p>' + getText(project.about) + '</p>';
+    document.getElementById('projectAbout').classList.add('collapsed');
+    const btn = document.getElementById('readMoreBtn');
+    const btnLabel = lang === 'nl' ? 'Lees meer...' : 'Read more...';
+    btn.querySelector('span').textContent = btnLabel;
 
     // MATERIALEN TAGS
     const matContainer = document.getElementById('materialsContainer');
@@ -356,17 +368,30 @@
       }
     }
 
-    // AFBEELDINGEN
+    // AFBEELDINGEN - GALLERY DYNAMISCH BOUWEN
+    const galleryContainer = document.getElementById('galleryContainer');
     if (project.images && Array.isArray(project.images) && project.images.length > 0) {
-      if (project.images[0]) {
-        document.getElementById('img-1').src = '../' + project.images[0];
-      }
-      if (project.images[1]) {
-        document.getElementById('img-2').src = '../' + project.images[1];
-      }
-      if (project.images[2]) {
-        document.getElementById('img-3').src = '../' + project.images[2];
-      }
+      // Hero image (eerste foto)
+      document.getElementById('heroImage').src = '../' + project.images[0];
+      
+      // Bouw dynamische gallery met alle foto's
+      galleryContainer.innerHTML = '';
+      const gallery = document.createElement('div');
+      gallery.className = 'gallery-b'; // Gridlayout met 3 kolommen op desktop
+      
+      project.images.forEach((imgPath, index) => {
+        const img = document.createElement('img');
+        img.src = '../' + imgPath;
+        img.alt = 'Foto ' + (index + 1);
+        img.onclick = function() { openLightbox(this.src); };
+        img.onerror = function() { this.style.background = '#e8e6e2'; };
+        gallery.appendChild(img);
+      });
+      
+      galleryContainer.appendChild(gallery);
+    } else {
+      galleryContainer.innerHTML = '';
+      document.getElementById('heroImage').parentElement.style.display = 'none';
     }
 
     // LINKS
@@ -388,6 +413,20 @@
     } else {
       linksBlock.style.display = 'none';
     }
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // TOGGLE READ MORE
+  // ═══════════════════════════════════════════════════════════
+  function toggleReadMore() {
+    const aboutEl = document.getElementById('projectAbout');
+    const btn = document.getElementById('readMoreBtn');
+    aboutEl.classList.toggle('collapsed');
+    
+    const text = aboutEl.classList.contains('collapsed')
+      ? (lang === 'nl' ? 'Lees meer...' : 'Read more...')
+      : (lang === 'nl' ? 'Lees minder' : 'Read less');
+    btn.querySelector('span').textContent = text;
   }
 
   // ═══════════════════════════════════════════════════════════
