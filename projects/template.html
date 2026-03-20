@@ -50,10 +50,6 @@
     .project-title em{font-style:italic;color:var(--accent)}
     .project-summary{color:var(--muted);font-size:.9rem;max-width:65ch;margin-bottom:1rem;line-height:1.85}
 
-    /* HERO IMAGE */
-    .hero-image-wrap{max-width:1200px;margin:0 auto;padding:0 3rem 4rem}
-    .hero-image-wrap img{width:100%;max-height:560px;object-fit:cover;border-radius:12px;display:block}
-
     /* GALLERY */
     .gallery-section{max-width:1200px;margin:0 auto;padding:0 3rem 5rem}
     .section-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem;display:block}
@@ -117,7 +113,7 @@
     .fade-in{animation:fadeUp .5s ease forwards}
 
     @media(max-width:900px){
-      .project-hero,.hero-image-wrap,.gallery-section,.project-info{padding-left:1.5rem;padding-right:1.5rem}
+      .project-hero,.gallery-section,.project-info{padding-left:1.5rem;padding-right:1.5rem}
       .gallery-a,.gallery-d{grid-template-columns:1fr}
       .gallery-a .main{grid-row:auto}
       .gallery-b{grid-template-columns:1fr 1fr}
@@ -154,10 +150,6 @@
   <h1 class="project-title" id="projectTitle">Project <em>Naam</em></h1>
 
   <p class="project-summary" id="projectDescription">Korte beschrijving van je project in het Nederlands.</p>
-</div>
-
-<!-- HERO IMAGE -->
-<div class="hero-image-wrap">
 </div>
 
 <!-- GALLERY -->
@@ -370,8 +362,6 @@
     // AFBEELDINGEN - GALLERY DYNAMISCH BOUWEN (Layout A: 1 groot + rest klein)
     const galleryContainer = document.getElementById('galleryContainer');
     if (project.images && Array.isArray(project.images) && project.images.length > 0) {
-      // Hero image (eerste foto)
-      document.getElementById('heroImage').src = '../' + project.images[0];
       
       // Bouw dynamische gallery
       galleryContainer.innerHTML = '';
@@ -412,7 +402,6 @@
       galleryContainer.appendChild(gallery);
     } else {
       galleryContainer.innerHTML = '';
-      document.getElementById('heroImage').parentElement.style.display = 'none';
     }
 
     // LINKS
