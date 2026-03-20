@@ -24,27 +24,27 @@
     },
     "aanpak": {
       "nl": [
-        "Idee bedenken en uitwerken",
-        "Onderdelen zoeken en samen testen",
-        "Code schrijven in Arduino IDE",
-        "3D model maken in Fusion 360",
-        "Onderdelen uitprinten in PLA",
-        "Elektronica en behuizing samenbouwen",
-        "Bugs oplossen",
-        "Video opnemen en editen"
+        "Idee bedenken en uitwerken.",
+        "Onderdelen zoeken en samen testen.",
+        "Code schrijven in Arduino IDE.",
+        "3D model maken in Fusion 360.",
+        "Onderdelen uitprinten in PLA.",
+        "Elektronica en behuizing samenbouwen.",
+        "Bugs oplossen.",
+        "Video opnemen en editen."
       ],
       "en": [
-        "Coming up with and developing the idea",
-        "Sourcing and testing components together",
-        "Writing code in Arduino IDE",
-        "Creating a 3D model in Fusion 360",
-        "Printing parts in PLA",
-        "Alles samenbouwen",
-        "Debugging and fixing issues",
-        "Recording and editing the video"
+        "Coming up with and developing the idea.",
+        "Sourcing and testing components together.",
+        "Writing code in Arduino IDE.",
+        "Creating a 3D model in Fusion 360.",
+        "Printing parts in PLA.",
+        "Alles samenbouwen.",
+        "Debugging and fixing issues.",
+        "Recording and editing the video."
       ]
     },
-    "tags": ["3D cad", "Electronics", "Arduino", "Code", "Video"],
+    "tags": ["3D cad", "Electronics", "Arduino", "API", "Video"],
     "links": {
       "youtube": "https://youtu.be/LdAyR4mhC-g?si=eDd-XRKiIevdDmhS",
       "Heise online": "https://www.heise.de/ratgeber/Bastelprojekt-mit-ESP32-Abonnentenzaehler-fuer-Youtube-bauen-9983037.html"
