@@ -75,6 +75,17 @@
     .card-year{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
     .card-arrow{position:absolute;bottom:1.8rem;right:1.8rem;font-size:.85rem;color:rgba(255,255,255,.18);transition:color .2s,transform .2s}
     .project-card:hover .card-arrow{color:var(--accent);transform:translate(3px,-3px)}
+
+    .scroll-chevron {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
+      color: var(--accent);
+      animation: bounce 2s infinite;
+    }
  
     /* Only NEW cards animate — existing ones stay put */
     @keyframes cardSlideIn {
