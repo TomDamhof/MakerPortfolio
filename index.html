@@ -10,20 +10,20 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--fg);font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;overflow-x:hidden;cursor:none}
-
+ 
     #cursor{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
     #cursor.big{width:40px;height:40px;background:transparent;border:1.5px solid var(--accent)}
-
+ 
     .lang-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;background:var(--fg);color:var(--bg);border:none;border-radius:99px;padding:.55rem 1.2rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:background .2s}
     .lang-btn:hover{background:var(--accent)}
-
+ 
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(249,248,246,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
     .nav-logo{font-family:'DM Serif Display',serif;font-size:1.15rem;text-decoration:none;color:var(--fg)}
     .nav-logo span{color:var(--accent)}
     .nav-links{display:flex;gap:2.4rem;list-style:none}
     .nav-links a{color:var(--muted);text-decoration:none;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
     .nav-links a:hover{color:var(--fg)}
-
+ 
     #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 3rem 4rem;gap:4rem;position:relative;overflow:hidden}
     .hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'DM Serif Display',serif;font-size:clamp(8rem,22vw,24rem);color:rgba(0,0,0,.03);white-space:nowrap;pointer-events:none;user-select:none}
     .hero-left{position:relative;z-index:1}
@@ -38,11 +38,7 @@
     .float{animation:floatA 5s ease-in-out infinite}
     .float2{animation:floatA 5s ease-in-out 1.2s infinite}
     @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-
-    /* SCROLL CHEVRON */
-    .scroll-chevron{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);width:24px;height:24px;color:var(--accent);animation:bounce 2s infinite}
-    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
-
+ 
     #about{padding:7rem 3rem;display:grid;grid-template-columns:1fr 2fr;gap:5rem;border-top:1px solid var(--border);max-width:1200px;margin:0 auto}
     .section-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding-top:.3rem}
     .about-text h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.9rem);line-height:1.12;margin-bottom:1.4rem}
@@ -51,7 +47,7 @@
     .stat-num{font-family:'DM Serif Display',serif;font-size:2.8rem;line-height:1}
     .stat-num span{color:var(--accent)}
     .stat-label{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
-
+ 
     #projects{padding:7rem 3rem;background:var(--fg);color:var(--bg)}
     #projects .inner{max-width:1200px;margin:0 auto}
     .projects-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem}
@@ -59,14 +55,14 @@
     .projects-header h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1}
     .project-count{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3)}
     .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.07)}
-
+ 
     .projects-loading{grid-column:1/-1;padding:3rem;text-align:center;color:rgba(255,255,255,.3);font-size:.8rem;letter-spacing:.08em}
-
+ 
     .filter-bar{margin-bottom:2rem}
     .filter-select{appearance:none;background:rgba(255,255,255,.06);color:var(--bg);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:.65rem 2.8rem .65rem 1rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:none;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center}
     .filter-select:focus{outline:none;border-color:rgba(255,255,255,.3)}
     .filter-select option{background:#111110;color:#f9f8f6}
-
+ 
     .project-card{background:var(--fg);padding:2.4rem;position:relative;overflow:hidden;transition:background .3s;cursor:none;text-decoration:none;color:inherit;display:block}
     .project-card:hover{background:#1b1b1a}
     .project-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
@@ -79,7 +75,7 @@
     .card-year{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
     .card-arrow{position:absolute;bottom:1.8rem;right:1.8rem;font-size:.85rem;color:rgba(255,255,255,.18);transition:color .2s,transform .2s}
     .project-card:hover .card-arrow{color:var(--accent);transform:translate(3px,-3px)}
-
+ 
     /* Only NEW cards animate — existing ones stay put */
     @keyframes cardSlideIn {
       from { opacity:0; transform:translateY(20px); }
@@ -89,7 +85,7 @@
       opacity: 0;
       animation: cardSlideIn .4s ease forwards;
     }
-
+ 
     #contact{padding:7rem 3rem;max-width:1200px;margin:0 auto}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem}
     .contact-left h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin-bottom:1rem}
@@ -100,16 +96,16 @@
     .social-link:hover{background:var(--hover-bg);border-color:var(--fg)}
     .social-icon{width:30px;height:30px;background:var(--fg);color:var(--bg);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .social-handle{margin-left:auto;color:var(--muted);font-size:.7rem}
-
+ 
     footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
     footer p{font-size:.7rem;color:var(--muted)}
     .footer-dot{color:var(--accent)}
-
+ 
     @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
     .reveal.visible{opacity:1;transform:none}
-
+ 
     @media(max-width:900px){
       #hero{grid-template-columns:1fr;padding:7rem 1.5rem 4rem}
       .hero-right{display:none}
@@ -126,12 +122,12 @@
 </head>
 <body>
 <div id="cursor"></div>
-
+ 
 <button class="lang-btn" onclick="toggleLang()" id="langBtn">
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
   <span id="langLabel">EN</span>
 </button>
-
+ 
 <nav>
   <a href="#" class="nav-logo">Tom <span>Damhof</span></a>
   <ul class="nav-links">
@@ -140,7 +136,7 @@
     <li><a href="#contact" data-nl="Contact" data-en="Contact">Contact</a></li>
   </ul>
 </nav>
-
+ 
 <section id="hero">
   <div class="hero-bg-text">MAKE</div>
   <div class="hero-left">
@@ -201,13 +197,8 @@
       <text x="203" y="112" font-family="monospace" font-size="9" fill="white" text-anchor="middle">VIDEO</text>
     </svg>
   </div>
-
-  <!-- Scroll down chevron -->
-  <svg class="scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="6 9 12 15 18 9"></polyline>
-  </svg>
 </section>
-
+ 
 <section id="about">
   <div class="section-label reveal" data-nl="Over mij" data-en="About me">Over mij</div>
   <div class="about-text reveal">
@@ -226,7 +217,7 @@
     </div>
   </div>
 </section>
-
+ 
 <section id="projects">
   <div class="inner">
     <div class="projects-header reveal">
@@ -246,7 +237,7 @@
     </div>
   </div>
 </section>
-
+ 
 <section id="contact">
   <div class="section-label reveal" data-nl="Contact" data-en="Contact">Contact</div>
   <div class="contact-grid">
@@ -269,15 +260,15 @@
           <span class="social-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
           MakerWorld <span class="social-handle">@TooMuchESP</span>
         </a>
-        <a href="/cdn-cgi/l/email-protection#a2f6cdcf8ce6c3cfcacdc4e2d8cbc5c5cd8cccce" class="social-link">
+        <a href="mailto:Tom.Damhof@ziggo.nl" class="social-link">
           <span class="social-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-          <span data-nl="E-mail" data-en="Email">E-mail</span> <span class="social-handle"><span class="__cf_email__" data-cfemail="d88cb7b5f69cb9b5b0b7be98a2b1bfbfb7f6b6b4">[email&#160;protected]</span></span>
+          <span data-nl="E-mail" data-en="Email">E-mail</span> <span class="social-handle">Tom.Damhof@ziggo.nl</span>
         </a>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <footer>
   <p>
     © 2026 Tom Damhof
@@ -287,8 +278,8 @@
     <span data-nl="Website gemaakt met hulp van AI" data-en="Website made with help of AI">Website gemaakt met hulp van AI</span>
   </p>
 </footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+ 
+<script>
   // ── Cursor ──────────────────────────────────────────────────
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {
@@ -300,7 +291,7 @@
     el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
   }
   document.querySelectorAll('a, button, select').forEach(addHover);
-
+ 
   // ── Scroll reveal ───────────────────────────────────────────
   const obs = new IntersectionObserver(entries => {
     entries.forEach((entry, i) => {
@@ -312,7 +303,7 @@
     });
   }, { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
+ 
   // ── State ───────────────────────────────────────────────────
   let currentLang      = 'nl';
   let allProjects      = [];
@@ -320,7 +311,7 @@
   let currentFiltered  = [];  // the active filtered list
   let visibleCount     = 3;   // how many cards are currently in the DOM
   const PAGE           = 3;   // cards added per click
-
+ 
   // ── Load ────────────────────────────────────────────────────
   async function loadProjects() {
     const grid = document.getElementById('projectsGrid');
@@ -334,7 +325,7 @@
       grid.innerHTML = '<div class="projects-loading">Voeg projecten toe aan projects.json om ze hier te zien.</div>';
     }
   }
-
+ 
   function buildFilterDropdown() {
     const tagSet = new Set();
     allProjects.forEach(p => {
@@ -351,14 +342,14 @@
     });
     addHover(select);
   }
-
+ 
   // ── Filter change → reset and full rebuild ──────────────────
   function filterProjects() {
     activeFilter = document.getElementById('filterSelect').value;
     visibleCount = PAGE;
     fullRender();
   }
-
+ 
   // ── Full rebuild (on filter / lang / collapse) ──────────────
   function fullRender() {
     currentFiltered = activeFilter
@@ -367,17 +358,17 @@
           return tags.map(t => t.trim()).includes(activeFilter);
         })
       : allProjects;
-
+ 
     updateCount(currentFiltered.length);
-
+ 
     const grid = document.getElementById('projectsGrid');
-
+ 
     if (currentFiltered.length === 0) {
       grid.innerHTML = '<div class="projects-loading">Geen projecten gevonden.</div>';
       renderButtons();
       return;
     }
-
+ 
     const toShow = currentFiltered.slice(0, visibleCount);
     grid.innerHTML = '';
     toShow.forEach((p, i) => {
@@ -387,21 +378,21 @@
       grid.appendChild(el);
       addHover(el);
     });
-
+ 
     renderButtons();
   }
-
+ 
   // ── Append ONLY the new cards — existing ones stay untouched ─
   function showMore() {
     const from = visibleCount;
     visibleCount = Math.min(visibleCount + PAGE, currentFiltered.length);
-
+ 
     // Nothing new to add?
     if (from >= currentFiltered.length) { renderButtons(); return; }
-
+ 
     const grid      = document.getElementById('projectsGrid');
     const newSlice  = currentFiltered.slice(from, visibleCount);
-
+ 
     newSlice.forEach((p, i) => {
       const el = createCard(p);
       el.style.animationDelay = (i * 0.07) + 's';
@@ -409,16 +400,16 @@
       grid.appendChild(el);
       addHover(el);
     });
-
+ 
     renderButtons();
   }
-
+ 
   // ── Collapse back to first page ──────────────────────────────
   function showLess() {
     visibleCount = PAGE;
     fullRender();
   }
-
+ 
   // ── Build one card element ───────────────────────────────────
   function createCard(p) {
     // Helper: get text from object with nl/en keys OR array
@@ -435,7 +426,7 @@
       // If it's a string
       return obj;
     };
-
+ 
     const title = getText(p.title);
     const desc  = getText(p.description);
   
@@ -462,8 +453,8 @@
   
     return a;
   }
-
-
+ 
+ 
   // ── Counter label ────────────────────────────────────────────
   function updateCount(n) {
     const el  = document.getElementById('projCount');
@@ -473,7 +464,7 @@
     el.setAttribute('data-nl', nl);
     el.setAttribute('data-en', en);
   }
-
+ 
   // ── Meer / Minder buttons ────────────────────────────────────
   function renderButtons() {
     let wrap = document.getElementById('showMoreBtn');
@@ -484,11 +475,11 @@
       document.getElementById('projectsGrid').after(wrap);
     }
     wrap.innerHTML = '';
-
+ 
     const base = `background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:6px;` +
                  `padding:.7rem 2rem;font-family:'DM Mono',monospace;font-size:.72rem;` +
                  `letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:color .2s,border-color .2s;`;
-
+ 
     if (visibleCount < currentFiltered.length) {
       const label = currentLang === 'nl' ? 'Meer zien' : 'Show more';
       const b = document.createElement('button');
@@ -500,7 +491,7 @@
       addHover(b);
       wrap.appendChild(b);
     }
-
+ 
     if (visibleCount > PAGE && currentFiltered.length > 0) {
       const label = currentLang === 'nl' ? 'Minder zien' : 'Collapse';
       const b = document.createElement('button');
@@ -513,11 +504,22 @@
       wrap.appendChild(b);
     }
   }
-
+ 
   // ── Language toggle ──────────────────────────────────────────
   function toggleLang() {
     currentLang = currentLang === 'nl' ? 'en' : 'nl';
     document.getElementById('langLabel').textContent = currentLang === 'nl' ? 'EN' : 'NL';
     document.documentElement.lang = currentLang;
     const allOpt = document.querySelector('#filterSelect option[value=""]');
-    if (allOpt) allOpt.textContent = currentLang === 'nl' ? 'Alle categorieën' : 'A
+    if (allOpt) allOpt.textContent = currentLang === 'nl' ? 'Alle categorieën' : 'All categories';
+    document.querySelectorAll('[data-nl]').forEach(el => {
+      const txt = el.getAttribute('data-' + currentLang);
+      if (txt) el.innerHTML = txt;
+    });
+    fullRender();
+  }
+ 
+  loadProjects();
+</script>
+</body>
+</html>
