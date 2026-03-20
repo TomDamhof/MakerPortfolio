@@ -72,7 +72,6 @@
     .card-tag{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .card-title{font-family:'DM Serif Display',serif;font-size:1.22rem;margin-bottom:.7rem;line-height:1.2}
     .card-desc{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.7;padding-bottom:1.5rem}
-    .read-more{color:var(--accent);font-weight:500;white-space:nowrap;margin-left:.4rem}
     .card-year{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
     .card-arrow{position:absolute;bottom:1.8rem;right:1.8rem;font-size:.85rem;color:rgba(255,255,255,.18);transition:color .2s,transform .2s}
     .project-card:hover .card-arrow{color:var(--accent);transform:translate(3px,-3px)}
@@ -88,6 +87,7 @@
       animation: bounce 2s infinite;
     }
  
+    /* Only NEW cards animate — existing ones stay put */
     @keyframes cardSlideIn {
       from { opacity:0; transform:translateY(20px); }
       to   { opacity:1; transform:translateY(0); }
@@ -324,9 +324,9 @@
   let currentLang      = 'nl';
   let allProjects      = [];
   let activeFilter     = '';
-  let currentFiltered  = [];
-  let visibleCount     = 3;
-  const PAGE           = 3;
+  let currentFiltered  = [];  // the active filtered list
+  let visibleCount     = 3;   // how many cards are currently in the DOM
+  const PAGE           = 3;   // cards added per click
  
   // ── Load ────────────────────────────────────────────────────
   async function loadProjects() {
@@ -359,12 +359,14 @@
     addHover(select);
   }
  
+  // ── Filter change → reset and full rebuild ──────────────────
   function filterProjects() {
     activeFilter = document.getElementById('filterSelect').value;
     visibleCount = PAGE;
     fullRender();
   }
  
+  // ── Full rebuild (on filter / lang / collapse) ──────────────
   function fullRender() {
     currentFiltered = activeFilter
       ? allProjects.filter(p => {
@@ -396,10 +398,12 @@
     renderButtons();
   }
  
+  // ── Append ONLY the new cards — existing ones stay untouched ─
   function showMore() {
     const from = visibleCount;
     visibleCount = Math.min(visibleCount + PAGE, currentFiltered.length);
  
+    // Nothing new to add?
     if (from >= currentFiltered.length) { renderButtons(); return; }
  
     const grid      = document.getElementById('projectsGrid');
@@ -416,20 +420,26 @@
     renderButtons();
   }
  
+  // ── Collapse back to first page ──────────────────────────────
   function showLess() {
     visibleCount = PAGE;
     fullRender();
   }
  
+  // ── Build one card element ───────────────────────────────────
   function createCard(p) {
+    // Helper: get text from object with nl/en keys OR array
     const getText = (obj) => {
       if (!obj) return '';
+      // If it's an object with nl/en keys
       if (typeof obj === 'object' && !Array.isArray(obj)) {
         return obj[currentLang] || obj.nl || obj.en || '';
       }
+      // If it's an array (legacy format)
       if (Array.isArray(obj)) {
         return currentLang === 'en' ? obj[1] : obj[0];
       }
+      // If it's a string
       return obj;
     };
  
@@ -452,13 +462,18 @@
       ${thumb}
       <div class="card-tag">${tagHtml}</div>
       <div class="card-title">${title}</div>
-      <div class="card-desc">${desc}
-      <div class="card-year">${p.year || ''}</div> <span class="read-more">read more ↗</span></div>
+      <div class="card-desc">${desc}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:0 0 1.5rem 0;">
+        <div class="card-year">${p.year || ''}</div>
+        <div style="color:var(--accent);font-size:.78rem;white-space:nowrap;">read more ↗</div>
+      </div>
     `;
   
     return a;
   }
  
+ 
+  // ── Counter label ────────────────────────────────────────────
   function updateCount(n) {
     const el  = document.getElementById('projCount');
     const nl  = String(n).padStart(2, '0') + (n === 1 ? ' project' : ' projecten');
@@ -468,6 +483,7 @@
     el.setAttribute('data-en', en);
   }
  
+  // ── Meer / Minder buttons ────────────────────────────────────
   function renderButtons() {
     let wrap = document.getElementById('showMoreBtn');
     if (!wrap) {
@@ -507,6 +523,7 @@
     }
   }
  
+  // ── Language toggle ──────────────────────────────────────────
   function toggleLang() {
     currentLang = currentLang === 'nl' ? 'en' : 'nl';
     document.getElementById('langLabel').textContent = currentLang === 'nl' ? 'EN' : 'NL';
