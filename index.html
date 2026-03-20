@@ -72,7 +72,7 @@
     .card-tag{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .card-title{font-family:'DM Serif Display',serif;font-size:1.22rem;margin-bottom:.7rem;line-height:1.2}
     .card-desc{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.7;padding-bottom:1.5rem}
-    .read-more{color:var(--accent);font-weight:500;white-space:nowrap;margin-left:.4rem}
+    .read-more{position:absolute;bottom:1.8rem;right:1.8rem;color:var(--accent);font-size:.78rem;font-weight:500;white-space:nowrap}
     .card-year{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
     .card-arrow{position:absolute;bottom:1.8rem;right:1.8rem;font-size:.85rem;color:rgba(255,255,255,.18);transition:color .2s,transform .2s}
     .project-card:hover .card-arrow{color:var(--accent);transform:translate(3px,-3px)}
@@ -276,9 +276,9 @@
           <span class="social-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
           MakerWorld <span class="social-handle">@TooMuchESP</span>
         </a>
-        <a href="mailto:Tom.Damhof@ziggo.nl" class="social-link">
+        <a href="/cdn-cgi/l/email-protection#1e4a7173305a7f737671785e6477797971307072" class="social-link">
           <span class="social-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-          <span data-nl="E-mail" data-en="Email">E-mail</span> <span class="social-handle">Tom.Damhof@ziggo.nl</span>
+          <span data-nl="E-mail" data-en="Email">E-mail</span> <span class="social-handle"><span class="__cf_email__" data-cfemail="5c08333172183d3134333a1c26353b3b33723230">[email&#160;protected]</span></span>
         </a>
       </div>
     </div>
@@ -295,7 +295,7 @@
   </p>
 </footer>
  
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── Cursor ──────────────────────────────────────────────────
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {
@@ -452,8 +452,9 @@
       ${thumb}
       <div class="card-tag">${tagHtml}</div>
       <div class="card-title">${title}</div>
-      <div class="card-desc">${desc} <span class="read-more">read more ↗</span></div>
+      <div class="card-desc">${desc}</div>
       <div class="card-year">${p.year || ''}</div>
+      <span class="read-more">read more ↗</span>
     `;
   
     return a;
@@ -512,15 +513,4 @@
     document.getElementById('langLabel').textContent = currentLang === 'nl' ? 'EN' : 'NL';
     document.documentElement.lang = currentLang;
     const allOpt = document.querySelector('#filterSelect option[value=""]');
-    if (allOpt) allOpt.textContent = currentLang === 'nl' ? 'Alle categorieën' : 'All categories';
-    document.querySelectorAll('[data-nl]').forEach(el => {
-      const txt = el.getAttribute('data-' + currentLang);
-      if (txt) el.innerHTML = txt;
-    });
-    fullRender();
-  }
- 
-  loadProjects();
-</script>
-</body>
-</html>
+    if (allOpt) allOpt.textContent = currentLang === 'nl' ? 'Alle categorieën' : 'Al
