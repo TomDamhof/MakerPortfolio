@@ -54,15 +54,15 @@
     "images": [
       "images/subscriber-counter-1.jpeg",
       "images/subscriber-counter-2.jpeg",
-      "images/subscriber-counter-3.jpeg",
-      "images/subscriber-counter-4.jpeg"
+      "images/subscriber-counter-3.jpg",
+      "images/subscriber-counter-4.jpg"
     ]
   },
 
 
   
   {
-    "id": "project-2",
+    "id": "",
     "file": "projects/template.html?id=project-2",
     "title": {
       "nl": "LED Strip Controller",
