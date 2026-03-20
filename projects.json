@@ -62,8 +62,8 @@
 
   
   {
-    "id": "wireless-buzzer",
-    "file": "projects/template.html?id=wireless-buzzer",
+    "id": "Wireless-Buzzer",
+    "file": "projects/template.html?id=Wireless-Buzzer",
     "title": {
       "nl": "Draadloze zoemer",
       "en": "Wireless Buzzer"
@@ -81,35 +81,41 @@
       "en": "Electronics"
     },
     "status": {
-      "nl": "Doorlopend",
-      "en": "In Progress"
+      "nl": "Afgerond",
+      "en": "Completed"
     },
     "aanpak": {
       "nl": [
-        "Arduino programmeren in C++",
-        "LED strip driver circuit ontwerpen",
-        "Mobile app integratie"
+        "Idee bedenken en uitwerken.",
+        "Onderdelen zoeken en samen testen.",
+        "Code schrijven in Arduino IDE.",
+        "3D model maken in Fusion 360.",
+        "Onderdelen uitprinten in PLA.",
+        "Elektronica en behuizing samenbouwen.",
+        "Bugs oplossen.",
+        "Video opnemen en editen."
       ],
       "en": [
-        "Program Arduino in C++",
-        "Design LED strip driver circuit",
-        "Mobile app integration"
+        "Coming up with and developing the idea.",
+        "Sourcing and testing components together.",
+        "Writing code in Arduino IDE.",
+        "Creating a 3D model in Fusion 360.",
+        "Printing parts in PLA.",
+        "Alles samenbouwen.",
+        "Debugging and fixing issues.",
+        "Recording and editing the video."
       ]
     },
-    "tags": ["Arduino", "Electronics", "C++"],
+    "tags": ["Arduino",  "Electronics", "PCB", "Video"],
     "links": {
-      "youtube": "https://youtube.com/@toomuchesp",
-      "makerworld": "https://makerworld.com/@TooMuchESP",
-      "github": "https://github.com/TomDamhof/project",
-      "instagram": "https://instagram.com/toomuchesp",
-      "printables": "https://www.printables.com/user/tomdamhof"
+      "youtube": "https://youtu.be/3FnE-upeYt4?si=pGxNKj68i9ER8S93",
     },
-    "year": "2025",
-    "thumb": "images/led-controller-thumb.jpg",
+    "year": "2024",
+    "thumb": "images/wireless-buzzer-1.jpg",
     "images": [
-      "images/led-controller-1.jpg",
-      "images/led-controller-2.jpg",
-      "images/led-controller-3.jpg"
+      "images/wireless-buzzer-1.jpg",
+      "images/wireless-buzzer-2.jpg",
+      "images/wireless-buzzer-3.jpg"
     ]
   }
 ]
