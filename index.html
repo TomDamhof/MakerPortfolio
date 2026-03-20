@@ -75,9 +75,10 @@
     .card-year{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
     .card-arrow{position:absolute;bottom:1.8rem;right:1.8rem;font-size:.85rem;color:rgba(255,255,255,.18);transition:color .2s,transform .2s}
     .project-card:hover .card-arrow{color:var(--accent);transform:translate(3px,-3px)}
-
-    .scroll-chevron {
+    .float4{
       animation: floatA 3s ease-in-out infinite;
+    }
+    .scroll-chevron {
       position: absolute;
       bottom: 3rem;
       left: 50%;
@@ -211,11 +212,11 @@
     </svg>
   </div>
 </section>
-
-<svg class="scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="6 9 12 15 18 9"></polyline>
-</svg>
-  
+<g class="float4">
+  <svg class="scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+  </svg>
+</g>
 <section id="about">
   <div class="section-label reveal" data-nl="Over mij" data-en="About me">Over mij</div>
   <div class="about-text reveal">
