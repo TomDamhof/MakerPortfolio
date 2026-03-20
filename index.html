@@ -72,7 +72,7 @@
     .card-tag{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .card-title{font-family:'DM Serif Display',serif;font-size:1.22rem;margin-bottom:.7rem;line-height:1.2}
     .card-desc{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.7;padding-bottom:1.5rem}
-    .read-more{position:absolute;bottom:1.8rem;right:1.8rem;color:var(--accent);font-size:.78rem;font-weight:500;white-space:nowrap}
+    .read-more{color:var(--accent);font-size:.78rem;font-weight:500;white-space:nowrap}
     .card-year{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
     .card-arrow{position:absolute;bottom:1.8rem;right:1.8rem;font-size:.85rem;color:rgba(255,255,255,.18);transition:color .2s,transform .2s}
     .project-card:hover .card-arrow{color:var(--accent);transform:translate(3px,-3px)}
@@ -453,8 +453,10 @@
       <div class="card-tag">${tagHtml}</div>
       <div class="card-title">${title}</div>
       <div class="card-desc">${desc}</div>
-      <div class="card-year">${p.year || ''}</div>
-      <span class="read-more">read more ↗</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:1.5rem;">
+        <div class="card-year">${p.year || ''}</div>
+        <span class="read-more">read more ↗</span>
+      </div>
     `;
   
     return a;
