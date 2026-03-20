@@ -361,7 +361,7 @@
       const img1 = document.createElement('img');
       img1.src = '../' + project.images[0];
       img1.alt = 'Foto 1';
-      img1.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;min-height:400px;';
+      img1.style.cssText = 'width:100%;height:50%;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;min-height:400px;';
       img1.onclick = function() { openLightbox(this.src); };
       img1.onmouseover = function() { this.style.opacity = '0.9'; };
       img1.onmouseout = function() { this.style.opacity = '1'; };
