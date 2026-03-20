@@ -3,7 +3,7 @@
     "id": "Subscriber-Counter",
     "file": "projects/template.html?id=Subscriber-Counter",
     "title": {
-      "nl": "Subscriber Counter",
+      "nl": "abonneeteller",
       "en": "Subscriber Counter"
     },
     "description": {
@@ -62,18 +62,19 @@
 
   
   {
-    "id": "",
-    "file": "projects/template.html?id=project-2",
+    "id": "wireless-buzzer",
+    "file": "projects/template.html?id=wireless-buzzer",
     "title": {
-      "nl": "LED Strip Controller",
-      "en": "LED Strip Controller"
+      "nl": "Draadloze zoemer",
+      "en": "Wireless Buzzer"
     },
     "description": {
-      "nl": "Een Arduino-gebaseerde controller voor adresseerbare LED strips met app besturing.",
-      "en": "An Arduino-based controller for addressable LED strips with app control."
+      "nl": "10 draatloze zoemers die door het hele huis kunnen verstopt worden en met een druk op de knop tugelijkijertijd af gaan.",
+      "en": "10 wireless buzzers that can be hidden throughout the house and go off simultaneously at the push of a button."
     },
-    "about": {"nl": "Een live-updatende YouTube-abonnees- en weergaveteller die automatisch de helderheid aanpast aan de omgeving.",
-    "en": "A live-updating YouTube subscriber and view counter that automatically adjusts its brightness to the surroundings."
+    "about": {
+      "nl": "Dit is het eerste project waarbij ik met custom PCB’s heb gewerkt. Ik had meerdere ESP8266-modules aangesloten op een buzzer en van stroom voorzien met twee AA-batterijen. Om ten minste een paar dagen batterijduur te hebben, heb ik de ESP8266 in deep sleep gezet voor telkens één minuut. Wanneer hij wakker wordt, maakt hij verbinding met een lokale webserver die wordt gehost door een ESP32 en controleert hij of hij moet triggeren. De PCB’s werden voor dit project gratis aan mij geleverd door PCBWay.",
+      "en": "This is the first project where I worked with custom PCBs. I had multiple ESP8266 modules connected to a buzzer and powered by two AA batteries. To achieve at least a few days of battery life, I put the ESP8266 into deep sleep for one minute at a time. When it wakes up, it connects to a local web server hosted by an ESP32 and checks whether it should trigger. The PCBs for this project were provided to me for free by PCBWay."
     },
     "categorie": {
       "nl": "Electronics",
