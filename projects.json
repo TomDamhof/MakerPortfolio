@@ -87,23 +87,19 @@
     "aanpak": {
       "nl": [
         "Idee bedenken en uitwerken.",
-        "Onderdelen zoeken en samen testen.",
-        "Code schrijven in Arduino IDE.",
-        "3D model maken in Fusion 360.",
-        "Onderdelen uitprinten in PLA.",
-        "Elektronica en behuizing samenbouwen.",
-        "Bugs oplossen.",
-        "Video opnemen en editen."
+        "Onderdelen zoeken en samen testen op een prototypebord.",
+        "Code schrijven in de Arduino IDE.",
+        "Custom PCB ontwerpen en bestellen.",
+        "10× PCB’s met elektronica solderen.",
+        "Video opnemen en bewerken."
       ],
       "en": [
-        "Coming up with and developing the idea.",
-        "Sourcing and testing components together.",
-        "Writing code in Arduino IDE.",
-        "Creating a 3D model in Fusion 360.",
-        "Printing parts in PLA.",
-        "Alles samenbouwen.",
-        "Debugging and fixing issues.",
-        "Recording and editing the video."
+        "Come up with and develop an idea.",
+        "Find components and test them together on a prototyping board.",
+        "Write code in the Arduino IDE.",
+        "Design and order a custom PCB.",
+        "Solder electronics onto 10 PCBs.",
+        "Record and edit a video."
       ]
     },
     "tags": ["Arduino",  "Electronics", "PCB", "Video"],
