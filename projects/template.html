@@ -209,13 +209,11 @@
   // Cursor verbergen als muis pagina verlaat
   document.addEventListener('mouseleave', () => {
     document.getElementById('cursor').style.opacity = '0';
-    document.getElementById('cursor').style.pointerEvents = 'none';
   });
   
   // Cursor terug zichtbaar als muis terugkomt
   document.addEventListener('mouseenter', () => {
     document.getElementById('cursor').style.opacity = '1';
-    document.getElementById('cursor').style.pointerEvents = 'auto';
   });
 
   // ═══════════════════════════════════════════════════════════
