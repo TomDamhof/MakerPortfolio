@@ -54,7 +54,7 @@
     .projects-header .section-label{color:var(--accent)}
     .projects-header h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1}
     .project-count{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.07)}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.07)}
  
     .projects-loading{grid-column:1/-1;padding:3rem;text-align:center;color:rgba(255,255,255,.3);font-size:.8rem;letter-spacing:.08em}
  
@@ -68,10 +68,10 @@
     .project-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
     .project-card:hover::after{transform:scaleX(1)}
     .card-thumb{width:100%;height:160px;object-fit:cover;border-radius:6px;margin-bottom:1.4rem;display:block;background:rgba(255,255,255,.05)}
-    .card-thumb-placeholder{width:100%;height:160px;border-radius:6px;margin-bottom:1.4rem;background:rgba(255,255,255,.05);border:1.5px dashed rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.15);font-size:.7rem;letter-spacing:.06em}
+    .card-thumb-placeholder{width:100%;height:160px;border-radius:6px;margin-bottom:1.4rem;background:rgba(255,255,255,.05);border:2px dashed rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.15);font-size:.7rem;letter-spacing:.06em}
     .card-tag{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .card-title{font-family:'DM Serif Display',serif;font-size:1.22rem;margin-bottom:.7rem;line-height:1.2}
-    .card-desc{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.7;padding-bottom:1.5rem}
+    .card-desc{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.7;padding-bottom:2rem}
     .card-year{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
     .card-arrow{position:absolute;bottom:1.8rem;right:1.8rem;font-size:.85rem;color:rgba(255,255,255,.18);transition:color .2s,transform .2s}
     .project-card:hover .card-arrow{color:var(--accent);transform:translate(3px,-3px)}
@@ -117,11 +117,11 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
     .reveal.visible{opacity:1;transform:none}
     @media(max-width:1920px){
-      #hero{grid-template-columns:1fr;padding:7rem 1.5rem 4rem}
+      #hero{grid-template-columns:1fr;padding:7rem 2rem 4rem}
       .hero-right{display:none}
     }
     @media(max-width:900px){
-      #about{grid-template-columns:1fr;gap:2rem;padding:5rem 1.5rem}
+      #about{grid-template-columns:1fr;gap:2rem;padding:5rem 2rem}
       .projects-grid{grid-template-columns:1fr}
       .contact-grid{grid-template-columns:1fr;gap:3rem}
       nav{padding:1.2rem 1.5rem}
@@ -370,7 +370,7 @@
       visibleCount = PAGE;
     }
   }
-  // 🆕 Deze 5 regels zijn toegevoegd:
+
   if (tagParam) {
     setTimeout(() => {
       document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
@@ -412,7 +412,16 @@
       grid.appendChild(el);
       addHover(el);
     });
- 
+
+    const remainingSlots = (3 - (toShow.length % 3)) % 3;
+    for (let i = 0; i < remainingSlots; i++) {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'project-card';
+      placeholder.style.cssText = 'background:rgba(0,0,0,.02);border:1px dashed rgba(0,0,0,.08);cursor:default;';
+      placeholder.innerHTML = '';
+      grid.appendChild(placeholder);
+    }
+    
     renderButtons();
   }
  
@@ -434,6 +443,15 @@
       grid.appendChild(el);
       addHover(el);
     });
+
+    const remainingSlots = (3 - (toShow.length % 3)) % 3;
+    for (let i = 0; i < remainingSlots; i++) {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'project-card';
+      placeholder.style.cssText = 'background:rgba(0,0,0,.02);border:1px dashed rgba(0,0,0,.08);cursor:default;';
+      placeholder.innerHTML = '';
+      grid.appendChild(placeholder);
+    }
  
     renderButtons();
   }
