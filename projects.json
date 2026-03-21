@@ -168,4 +168,64 @@
       "images/Tardis-3dPrint-3.jpeg"
     ]
   }
+
+
+
+
+  
+  {
+    "id": "Game-Control-Panel",
+    "file": "projects/template.html?id=Game-Control-Panel",
+    "title": {
+      "nl": "Computer Spelbesturingspaneel",
+      "en": "Computer Game Control Panel"
+    },
+    "description": {
+      "nl": "Dit is een Computer Spelbesturingspaneel.",
+      "en": "This is a computer game control panel"
+    },
+    "about": {
+      "nl": "Ik heb dit spelbesturingspaneel gemaakt als een verjaardagscadeau voor mijn vader. Het communiceert met de computer alsof het een toetsenbord is. Er zijn een paar presets voor verschillende games die op een klein OLED-display worden weergegeven. De grootste uitdaging van dit project was om alle knoppen en schakelaars goed aan te sluiten en daarna in de code de juiste toetsen te sturen. De behuizing is gemodelleerd in Fusion 360 en geprint op een Elegoo Neptune 4 Plus 3D-printer.",
+      "en": "I made this game control panel as a birthday gift for my father. It communicates with the computer as if it were a keyboard. There are several presets for different games that are displayed on a small OLED screen. The biggest challenge of this project was to connect all the buttons and switches correctly and then send the right keys through code. The enclosure was modeled in Fusion 360 and printed on an Elegoo Neptune 4 Plus 3D printer."
+    },
+    "categorie": {
+      "nl": "Electronics",
+      "en": "Electronics"
+    },
+    "status": {
+      "nl": "Afgerond",
+      "en": "Completed"
+    },
+    "aanpak": {
+      "nl": [
+        "Idee bedenken en uitwerken.",
+        "Onderdelen zoeken en samen testen.",
+        "Code schrijven in Arduino IDE.",
+        "3D model maken in Fusion 360.",
+        "Elektronica en behuizing samenbouwen.",
+        "Bugs oplossen.",
+        "Video opnemen en editen."
+      ],
+      "en": [
+        "Coming up with and developing the idea.",
+        "Sourcing and testing components together.",
+        "Writing code in Arduino IDE.",
+        "Creating a 3D model in Fusion 360.",
+        "Assembling everything.",
+        "Debugging and fixing issues.",
+        "Recording and editing the video."
+      ]
+    },
+    "tags": ["3D cad", "Electronics", "Arduino", "Video"],
+    "links": {
+      "youtube": "https://youtu.be/7p2HHBVVcHo?si=LCo3GUVGSZ4bVZ3V"
+    },
+    "year": "2024",
+    "thumb": "images/Game-Control-Panel.jpeg",
+    "images": [
+      "images/Game-Control-Panel-1.jpeg",
+      "images/Game-Control-Panel-2.jpeg",
+      "images/Game-Control-Panel-3.jpeg"
+    ]
+  }
 ]
