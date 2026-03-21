@@ -57,10 +57,6 @@
     /* PROJECT ABOUT TEXT */
     #projectAbout{overflow:hidden}
     #projectAbout p{margin-bottom:.9rem;transition:max-height .3s}
-    #projectAbout.collapsed{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-    .read-more-btn{display:none;margin-top:.5rem;background:none;border:none;color:var(--accent);font-size:.8rem;cursor:none;text-decoration:underline;padding:0;font-family:'DM Mono',monospace;transition:opacity .2s}
-    .read-more-btn:hover{opacity:.8}
-    #projectAbout.collapsed ~ .read-more-btn{display:inline-block}
 
     /* FOOTER */
     footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between}
@@ -127,12 +123,9 @@
   <div>
     <div class="info-section">
       <span class="info-label" data-nl="Over dit project" data-en="About this project">Over dit project</span>
-      <div class="info-body" id="projectAbout" class="collapsed">
+      <div class="info-body" id="projectAbout">
         <p>Beschrijf hier je project uitgebreid. Waarom heb je het gemaakt? Wat was het doel?</p>
       </div>
-      <button class="read-more-btn" id="readMoreBtn" onclick="toggleReadMore()">
-        <span data-nl="Lees meer..." data-en="Read more...">Lees meer...</span>
-      </button>
     </div>
 
     <div class="info-section">
@@ -282,10 +275,6 @@
     document.getElementById('sidebarStatus').textContent = getText(project.status);
 
     document.getElementById('projectAbout').innerHTML = '<p>' + getText(project.about) + '</p>';
-    document.getElementById('projectAbout').classList.add('collapsed');
-    const btn = document.getElementById('readMoreBtn');
-    const btnLabel = lang === 'nl' ? 'Lees meer...' : 'Read more...';
-    btn.querySelector('span').textContent = btnLabel;
 
     const matContainer = document.getElementById('materialsContainer');
     matContainer.innerHTML = '';
@@ -311,61 +300,16 @@
       }
     }
 
-    // CUSTOM GALLERY LAYOUT: Foto 1 groot rechts, 2,3,4 klein links, 5,6,7 onder
+    // CUSTOM GALLERY LAYOUT: Foto 1 groot links, 2,3,4 klein rechts, 5,6,7 onder
     const galleryContainer = document.getElementById('galleryContainer');
     if (project.images && Array.isArray(project.images) && project.images.length > 0) {
       galleryContainer.innerHTML = '';
 
-      // ROW 1: Klein links (2,3,4) + Groot rechts (1)
+      // ROW 1: Groot links (1) + Klein rechts (2,3,4)
       const row1 = document.createElement('div');
-      row1.style.cssText = 'display:grid;grid-template-columns:1fr 2fr;gap:1rem;margin-bottom:1rem;';
+      row1.style.cssText = 'display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-bottom:1rem;';
 
-      // Kleine kolom links (2,3,4)
-      const leftCol = document.createElement('div');
-      leftCol.style.cssText = 'display:flex;flex-direction:column;gap:1rem;';
-
-      // Foto 2
-      if (project.images[1]) {
-        const img = document.createElement('img');
-        img.src = '../' + project.images[1];
-        img.alt = 'Foto 2';
-        img.style.cssText = 'width:100%;height:190px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;';
-        img.onclick = function() { openLightbox(this.src); };
-        img.onmouseover = function() { this.style.opacity = '0.9'; };
-        img.onmouseout = function() { this.style.opacity = '1'; };
-        img.onerror = function() { this.style.background = '#e8e6e2'; };
-        leftCol.appendChild(img);
-      }
-
-      // Foto 3
-      if (project.images[2]) {
-        const img = document.createElement('img');
-        img.src = '../' + project.images[2];
-        img.alt = 'Foto 3';
-        img.style.cssText = 'width:100%;height:190px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;';
-        img.onclick = function() { openLightbox(this.src); };
-        img.onmouseover = function() { this.style.opacity = '0.9'; };
-        img.onmouseout = function() { this.style.opacity = '1'; };
-        img.onerror = function() { this.style.background = '#e8e6e2'; };
-        leftCol.appendChild(img);
-      }
-
-      // Foto 4
-      if (project.images[3]) {
-        const img = document.createElement('img');
-        img.src = '../' + project.images[3];
-        img.alt = 'Foto 4';
-        img.style.cssText = 'width:100%;height:190px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;';
-        img.onclick = function() { openLightbox(this.src); };
-        img.onmouseover = function() { this.style.opacity = '0.9'; };
-        img.onmouseout = function() { this.style.opacity = '1'; };
-        img.onerror = function() { this.style.background = '#e8e6e2'; };
-        leftCol.appendChild(img);
-      }
-
-      row1.appendChild(leftCol);
-
-      // Foto 1 groot rechts
+      // Foto 1 groot links
       if (project.images[0]) {
         const img = document.createElement('img');
         img.src = '../' + project.images[0];
@@ -378,6 +322,50 @@
         row1.appendChild(img);
       }
 
+      // Kleine kolom rechts (2,3,4)
+      const rightCol = document.createElement('div');
+      rightCol.style.cssText = 'display:flex;flex-direction:column;gap:1rem;';
+
+      // Foto 2
+      if (project.images[1]) {
+        const img = document.createElement('img');
+        img.src = '../' + project.images[1];
+        img.alt = 'Foto 2';
+        img.style.cssText = 'width:100%;height:190px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;';
+        img.onclick = function() { openLightbox(this.src); };
+        img.onmouseover = function() { this.style.opacity = '0.9'; };
+        img.onmouseout = function() { this.style.opacity = '1'; };
+        img.onerror = function() { this.style.background = '#e8e6e2'; };
+        rightCol.appendChild(img);
+      }
+
+      // Foto 3
+      if (project.images[2]) {
+        const img = document.createElement('img');
+        img.src = '../' + project.images[2];
+        img.alt = 'Foto 3';
+        img.style.cssText = 'width:100%;height:190px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;';
+        img.onclick = function() { openLightbox(this.src); };
+        img.onmouseover = function() { this.style.opacity = '0.9'; };
+        img.onmouseout = function() { this.style.opacity = '1'; };
+        img.onerror = function() { this.style.background = '#e8e6e2'; };
+        rightCol.appendChild(img);
+      }
+
+      // Foto 4
+      if (project.images[3]) {
+        const img = document.createElement('img');
+        img.src = '../' + project.images[3];
+        img.alt = 'Foto 4';
+        img.style.cssText = 'width:100%;height:190px;object-fit:cover;border-radius:8px;display:block;cursor:none;transition:opacity .2s;';
+        img.onclick = function() { openLightbox(this.src); };
+        img.onmouseover = function() { this.style.opacity = '0.9'; };
+        img.onmouseout = function() { this.style.opacity = '1'; };
+        img.onerror = function() { this.style.background = '#e8e6e2'; };
+        rightCol.appendChild(img);
+      }
+
+      row1.appendChild(rightCol);
       galleryContainer.appendChild(row1);
 
       // ROW 2: 3 kleine onder (5,6,7)
@@ -424,20 +412,6 @@
     } else {
       linksBlock.style.display = 'none';
     }
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // TOGGLE READ MORE
-  // ═══════════════════════════════════════════════════════════
-  function toggleReadMore() {
-    const aboutEl = document.getElementById('projectAbout');
-    const btn = document.getElementById('readMoreBtn');
-    aboutEl.classList.toggle('collapsed');
-    
-    const text = aboutEl.classList.contains('collapsed')
-      ? (lang === 'nl' ? 'Lees meer...' : 'Read more...')
-      : (lang === 'nl' ? 'Lees minder' : 'Read less');
-    btn.querySelector('span').textContent = text;
   }
 
   // ═══════════════════════════════════════════════════════════
