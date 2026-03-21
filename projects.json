@@ -69,8 +69,8 @@
       "en": "Wireless Buzzer"
     },
     "description": {
-      "nl": "10 draatloze zoemers die door het hele huis kunnen verstopt worden en met een druk op de knop tegelijkertijd af gaan.",
-      "en": "10 wireless buzzers that can be hidden throughout the house and go off simultaneously at the push of a button."
+      "nl": "Tien draadloze zoemers die door het hele huis verstopt kunnen worden en met één druk op de knop tegelijkertijd afgaan.",
+      "en": "Ten wireless buzzers that can be hidden throughout the house and all go off simultaneously at the press of a button."
     },
     "about": {
       "nl": "Dit is het eerste project waarbij ik met custom PCB’s heb gewerkt. Ik had meerdere ESP8266-modules aangesloten op een buzzer en van stroom voorzien met twee AA-batterijen. Om ten minste een paar dagen batterijduur te hebben, heb ik de ESP8266 in deep sleep gezet voor telkens één minuut. Wanneer hij wakker wordt, maakt hij verbinding met een lokale webserver die wordt gehost door een ESP32 en controleert hij of hij moet triggeren. De PCB’s werden voor dit project gratis aan mij geleverd door PCBWay.",
