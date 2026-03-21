@@ -416,8 +416,8 @@
     const remainingSlots = (3 - (toShow.length % 3)) % 3;
     for (let i = 0; i < remainingSlots; i++) {
       const placeholder = document.createElement('div');
-      placeholder.className = 'project-card';
-      placeholder.style.cssText = 'background:rgba(0,0,0,.02);border:1px dashed rgba(0,0,0,.08);cursor:default;';
+      placeholder.className = 'placeholder-card';
+      placeholder.style.cssText = 'background: var(#111110);padding: 2.4rem;';
       placeholder.innerHTML = '';
       grid.appendChild(placeholder);
     }
@@ -447,8 +447,8 @@
     const remainingSlots = (3 - (toShow.length % 3)) % 3;
     for (let i = 0; i < remainingSlots; i++) {
       const placeholder = document.createElement('div');
-      placeholder.className = 'project-card';
-      placeholder.style.cssText = 'background:rgba(0,0,0,.02);border:1px dashed rgba(0,0,0,.08);cursor:default;';
+      placeholder.className = 'placeholder-card';
+      placeholder.style.cssText = 'background: var(#111110);padding: 2.4rem;';
       placeholder.innerHTML = '';
       grid.appendChild(placeholder);
     }
