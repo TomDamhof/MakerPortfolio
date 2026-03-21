@@ -115,3 +115,57 @@
     ]
   }
 ]
+
+
+
+  {
+    "id": "Tardis-3dPrint",
+    "file": "projects/template.html?id=Tardis-3dPrint",
+    "title": {
+      "nl": "Tardis Doctor Who telefoonstandaard",
+      "en": "Tardis Doctor Who Phone Stand"
+    },
+    "description": {
+      "nl": "Dit is een print-in-place telefoonstandaard in de vorm van een TARDIS uit de serie Doctor Who.",
+      "en": "This is a print-in-place phone stand in the shape of a TARDIS from the series Doctor Who."
+    },
+    "about": {
+      "nl": "Dit is een print-in-place telefoonstandaard geïnspireerd op de TARDIS uit de serie Doctor Who. Het model heb ik ontworpen in Fusion 360 en vervolgens geprint op een Elegoo Neptune 4 Plus 3D-printer",
+      "en": "This is a print-in-place phone stand inspired by the TARDIS from the series Doctor Who. I designed the model in Fusion 360 and printed it on an Elegoo Neptune 4 Plus 3D printer."
+    },
+    "categorie": {
+      "nl": "3D-model",
+      "en": "3D Model"
+    },
+    "status": {
+      "nl": "Afgerond",
+      "en": "Completed"
+    },
+    "aanpak": {
+      "nl": [
+        "Idee bedenken en uitwerken.",
+        "Ontwerpen in Fusion 360.",
+        "3D-printen in PLA",
+        "3D-bestanden uploaden naar MakerWorld"
+      ],
+      "en": [
+        "Brainstorming and developing the idea",
+        "Designing in Fusion 360",
+        "3D printing in PLA",
+        "Uploading 3D files to MakerWorld",
+      ]
+    },
+    "tags": ["3D cad"],
+    "links": {
+      "MakerWorld": "https://makerworld.com/nl/models/381904-tardis-doctor-who-phone-stand-print-in-place#profileId-282198",
+      "youtube": "https://www.youtube.com/shorts/NWF8Qt_dmAU"
+    },
+    "year": "2024",
+    "thumb": "images/Tardis-3dPrint-1.jpeg",
+    "images": [
+      "images/Tardis-3dPrint-1.jpeg",
+      "images/Tardis-3dPrint-2.jpeg",
+      "images/Tardis-3dPrint-3.jpeg"
+    ]
+  }
+]
