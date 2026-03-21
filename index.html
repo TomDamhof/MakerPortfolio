@@ -317,6 +317,12 @@
   document.addEventListener('mouseenter', () => {
     document.getElementById('cursor').style.opacity = '1';
   });
+
+  @media (hover: none) {
+    #cursor {
+      display: none !important;
+    }
+  }
  
   // ── Scroll reveal ───────────────────────────────────────────
   const obs = new IntersectionObserver(entries => {
