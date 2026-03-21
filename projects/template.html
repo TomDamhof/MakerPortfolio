@@ -149,7 +149,7 @@
     </div>
 
     <div class="sidebar-block">
-      <span class="sidebar-label" data-nl="tags" data-en="tags">tags</span>
+      <span class="sidebar-label" data-nl="Materialen & Tools" data-en="Materials & Tools">Materialen & Tools</span>
       <div class="sidebar-value" id="materialsContainer">
         <!-- Wordt dynamisch gevuld -->
       </div>
@@ -280,10 +280,14 @@
     matContainer.innerHTML = '';
     if (project.tags && Array.isArray(project.tags)) {
       project.tags.forEach(tag => {
-        const span = document.createElement('span');
-        span.className = 'sidebar-tag';
-        span.textContent = tag;
-        matContainer.appendChild(span);
+        const a = document.createElement('a');
+        a.className = 'sidebar-tag';
+        a.href = '../index.html?tags=' + encodeURIComponent(tag);
+        a.textContent = tag;
+        a.style.cssText = 'cursor:pointer;text-decoration:none;display:inline-block;background:var(--fg);color:var(--bg);font-size:.68rem;padding:.2rem .65rem;border-radius:4px;margin:.2rem .2rem 0 0;letter-spacing:.06em;transition:opacity .2s;';
+        a.onmouseover = function() { this.style.opacity = '0.8'; };
+        a.onmouseout = function() { this.style.opacity = '1'; };
+        matContainer.appendChild(a);
       });
     }
 
