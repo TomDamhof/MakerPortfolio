@@ -358,6 +358,18 @@
     });
     addHover(select);
   }
+
+  // Check voor ?tags= parameter in URL
+  const params = new URLSearchParams(window.location.search);
+  const tagParam = params.get('tags');
+  if (tagParam) {
+    const select = document.getElementById('filterSelect');
+    if (select) {
+      select.value = tagParam;
+      activeFilter = tagParam;
+      visibleCount = PAGE;
+    }
+  }
  
   // ── Filter change → reset and full rebuild ──────────────────
   function filterProjects() {
