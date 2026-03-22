@@ -338,11 +338,6 @@
     document.getElementById('cursor').style.opacity = '1';
   });
 
-  //@media (hover: none) {
-  //  #cursor {
-  //    display: none !important;
-  //  }
-  //}
  
   // ── Scroll reveal ───────────────────────────────────────────
   const obs = new IntersectionObserver(entries => {
@@ -448,8 +443,8 @@
       grid.appendChild(el);
       addHover(el);
     });
-
-    const remainingSlots = (3 - (toShow.length % 3)) % 3;
+    
+    const remainingSlots = (3 - (visibleCount % 3)) % 3;
     for (let i = 0; i < remainingSlots; i++) {
       const placeholder = document.createElement('div');
       placeholder.className = 'placeholder-card';
@@ -480,7 +475,7 @@
       addHover(el);
     });
 
-    const remainingSlots = (3 - (toShow.length % 3)) % 3;
+    const remainingSlots = (3 - (visibleCount % 3)) % 3;
     for (let i = 0; i < remainingSlots; i++) {
       const placeholder = document.createElement('div');
       placeholder.className = 'placeholder-card';
