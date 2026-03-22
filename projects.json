@@ -179,8 +179,8 @@
       "en": "Computer Game Control Panel"
     },
     "description": {
-      "nl": "Dit is een Computer Spelbesturingspaneel.",
-      "en": "This is a computer game control panel"
+      "nl": "Dit project heb ik gemaakt als verjaardagscadeau voor mijn vader. Het is een zelfgemaakt computer-spelbesturingspaneel.",
+      "en": "This project was made as a birthday gift for my father. It is a custom-built computer game control panel."
     },
     "about": {
       "nl": "Ik heb dit spelbesturingspaneel gemaakt als een verjaardagscadeau voor mijn vader. Het communiceert met de computer alsof het een toetsenbord is. Er zijn een paar presets voor verschillende games die op een klein OLED-display worden weergegeven. De grootste uitdaging van dit project was om alle knoppen en schakelaars goed aan te sluiten en daarna in de code de juiste toetsen te sturen. De behuizing is gemodelleerd in Fusion 360 en geprint op een Elegoo Neptune 4 Plus 3D-printer.",
