@@ -226,8 +226,68 @@
       "images/Game-Control-Panel-3.jpeg",
       "images/Game-Control-Panel-4.jpeg"
     ]
-  }
+  },
 
 
+
+
+  {
+  "id": "School-Schedule",
+  "file": "projects/template.html?id=School-Schedule",
+  "title": {
+    "nl": "schoolrooster",
+    "en": "School Schedule"
+  },
+  "description": {
+    "nl": "Een apparaatje waarmee ik mijn schoolrooster kan zien, na een telefoonverbod op school.",
+    "en": "A small device that lets me see my school schedule, after a phone ban at school."
+  },
+  "about": {
+    "nl": "Na een telefoonverbod op school kon ik mijn rooster niet meer zien. Daarom heb ik een apparaatje gemaakt dat verbonden is met het internet en via een API mijn rooster voor de dag ophaalt. En natuurlijk heb ik er ook verschillende spelletjes op geprogrammeerd, zoals Snake.Ik begin met v1, dit was een proof of concept voor mij. Hiermee testte ik of de API werkt met het schoolwifi, en of zo'n apparaatje iets voor mij is. Hier waren wel wat problemen: hij had bijvoorbeeld geen ingebouwde batterij en een wat krassend scherm.Daarom begon ik met v2. Deze versie had bijna alle problemen van v1 opgelost. Hij had een eigen batterij gekregen, een groter scherm en een extra knop, zodat ik een menu kon bedienen. Maar hij was volledig met de hand gesoldeerd, en daardoor best groot en zwaar.En dat is de reden dat ik met v3 ben begonnen. Voor deze versie heb ik een custom PCB ontworpen en laten maken, waarmee ik hem een stuk compacter kon maken. Op de PCB heb ik ook een extra I²C-interface toegevoegd, zodat ik later extra sensoren kan aansluiten, bijvoorbeeld een Time-of-Flight (ToF) afstandssensor.Uiteindelijk is het een heel handig en compact apparaatje geworden, waarmee ik altijd weet in welk lokaal ik moet zijn. En als ik me verveel, kan ik ook nog een spelletje spelen.",
+    "en": "After a phone ban at school, I could no longer see my schedule. So I built a device that connects to the internet and fetches my daily schedule through an API. And of course, I also programmed several games onto it, like Snake.\nI'll start with v1 — this was a proof of concept for me. With it, I tested whether the API works with the school Wi-Fi, and whether a device like this would be something for me. There were quite a few issues though: for example, it had no built-in battery and a somewhat scratchy screen.\nThat's why I started on v2. This version solved almost all the problems from v1. It got its own battery, a larger screen, and an extra button so I could navigate a menu. However, it was fully hand-soldered, which made it rather large and heavy.\nAnd that is the reason I started on v3. For this version I designed a custom PCB and had it manufactured, which allowed me to make it a lot more compact. On the PCB I also added an extra I²C interface, so I can connect extra sensors later on, for example a Time-of-Flight (ToF) distance sensor.\nIn the end it became a very handy and compact little device that always lets me know which classroom I need to be in. And when I'm bored, I can always play a game too."
+  },
+  "categorie": {
+    "nl": "Electronics",
+    "en": "Electronics"
+  },
+  "status": {
+    "nl": "Afgerond",
+    "en": "Completed"
+  },
+  "aanpak": {
+    "nl": [
+      "Probleem?",
+      "Proof of concept maken met v1.",
+      "Problemen oplossen met v2.",
+      "Een finaal product maken met v3."
+    ],
+    "en": [
+      "Problem?",
+      "Create a proof of concept with v1.",
+      "Solve problems with v2.",
+      "Make a final product with v3."
+    ]
+  },
+  "tags": [
+    "3D Print",
+    "Arduino",
+    "Video",
+    "Electronics, Arduino API PCB, 3D cad, 3D print"
+  ],
+  "links": {},
+  "year": "2025",
+  "thumb": "PXL_20260603_092541349.jpg",
+  "images": [
+    "Polish_20260603_122814218.jpg",
+    "Polish_20260603_122938095.jpg",
+    "Polish_20260603_123055545.jpg",
+    "PXL_20251231_214600831.jpg",
+    "PXL_20251231_215227058.jpg",
+    "PXL_20260101_023426502.jpg"
+  ]
+}
+
+
+  
   
 ]
