@@ -272,7 +272,12 @@
     "3D Print",
     "Arduino",
     "Video",
-    "Electronics, Arduino API PCB, 3D cad, 3D print"
+    "Electronics",
+    "Arduino",
+    "API",
+    "PCB", 
+    "3D cad",
+    "3D print"
   ],
   "links": {},
   "year": "2025",
