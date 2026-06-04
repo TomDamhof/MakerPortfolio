@@ -1,26 +1,7 @@
 # Tom Damhof — Maker Portfolio
 
-## 📁 Bestandsstructuur
+# !!!!! The instructions are outdated !!!!!
 
-```
-portfolio/
-├── index.html               ← Homepage (niet aanpassen)
-├── projects.json            ← ⭐ HIER voeg je projecten toe
-├── README.md                ← Dit bestand
-│
-├── projects/
-│   ├── project-template.html   ← ⭐ Kopieer dit voor elk nieuw project
-│   ├── custom-enclosure.html   ← Voorbeeld project
-│   ├── arduino-sensorstation.html
-│   └── ...                     ← Jouw eigen projecten
-│
-└── images/
-    ├── custom-enclosure-thumb.jpg   ← Thumbnail voor homepage
-    ├── custom-enclosure-1.jpg       ← Foto's voor projectpagina
-    └── ...                          ← Al je foto's
-```
-
----
 
 ## ➕ Nieuw project toevoegen
 
