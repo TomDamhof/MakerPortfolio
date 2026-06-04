@@ -61,10 +61,4 @@ Het template heeft 4 layouts om uit te kiezen. Verwijder de layouts die je niet 
 
 Je kunt ook een **YouTube video** embedden — zie het commentaar in het template.
 
----
 
-## 🌐 GitHub Pages
-
-1. Push alle bestanden naar je GitHub repo
-2. Ga naar Settings → Pages → Source: main branch / root
-3. Je portfolio is live op `https://jouwgebruikersnaam.github.io/repo-naam`
