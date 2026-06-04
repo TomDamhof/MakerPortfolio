@@ -415,6 +415,13 @@
       document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
     }, 300);
   }
+
+    const langParam = params.get('lang');
+  if (langParam === 'en') {
+    currentLang = 'en';
+    document.getElementById('langLabel').textContent = 'NL';
+    document.documentElement.lang = 'en';
+  }
  
   // ── Full rebuild (on filter / lang / collapse) ──────────────
   function fullRender() {
