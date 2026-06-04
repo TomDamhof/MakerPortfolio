@@ -7,8 +7,8 @@
       "en": "School Schedule"
     },
     "description": {
-      "nl": "Een apparaatje waarmee ik mijn schoolrooster kan zien, na een telefoonverbod op school.",
-      "en": "A small device that lets me see my school schedule, after a phone ban at school."
+      "nl": "Een apparaatje waarmee ik mijn schoolrooster kan zien, na een telefoonverbod op school. Met een custom PCB.",
+      "en": "A small device that lets me see my school schedule, after a phone ban at school. With a custom PCB."
     },
     "about": {
       "nl": "Na een telefoonverbod op school kon ik mijn rooster niet meer zien. Daarom heb ik een apparaatje gemaakt dat verbonden is met het internet en via een API mijn rooster voor de dag ophaalt. En natuurlijk heb ik er ook verschillende spelletjes op geprogrammeerd, zoals Snake.Ik begin met v1, dit was een proof of concept voor mij. Hiermee testte ik of de API werkt met het schoolwifi, en of zo'n apparaatje iets voor mij is. Hier waren wel wat problemen: hij had bijvoorbeeld geen ingebouwde batterij en een wat krassend scherm.Daarom begon ik met v2. Deze versie had bijna alle problemen van v1 opgelost. Hij had een eigen batterij gekregen, een groter scherm en een extra knop, zodat ik een menu kon bedienen. Maar hij was volledig met de hand gesoldeerd, en daardoor best groot en zwaar.En dat is de reden dat ik met v3 ben begonnen. Voor deze versie heb ik een custom PCB ontworpen en laten maken, waarmee ik hem een stuk compacter kon maken. Op de PCB heb ik ook een extra I²C-interface toegevoegd, zodat ik later extra sensoren kan aansluiten, bijvoorbeeld een Time-of-Flight (ToF) afstandssensor.Uiteindelijk is het een heel handig en compact apparaatje geworden, waarmee ik altijd weet in welk lokaal ik moet zijn. En als ik me verveel, kan ik ook nog een spelletje spelen.",
