@@ -408,6 +408,13 @@
     visibleCount = PAGE;
     fullRender();
   }
+
+  
+  if (tagParam) {
+    setTimeout(() => {
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  }
  
   // ── Full rebuild (on filter / lang / collapse) ──────────────
   function fullRender() {
@@ -597,7 +604,17 @@
     });
     fullRender();
   }
- 
+
+  
+  if (currentLang === 'en') {
+    document.querySelectorAll('[data-nl]').forEach(el => {
+      const txt = el.getAttribute('data-en');
+      if (txt) el.innerHTML = txt;
+    });
+    const allOpt = document.querySelector('#filterSelect option[value=""]');
+    if (allOpt) allOpt.textContent = 'All categories';
+  }
+  
   loadProjects();
 </script>
 </body>
