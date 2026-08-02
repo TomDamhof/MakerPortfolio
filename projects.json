@@ -233,65 +233,8 @@
     ]
   },
 
-{
-    "id": "Subscriber-Counter",
-    "file": "projects/template.html?id=Subscriber-Counter",
-    "title": {
-      "nl": "abonneeteller",
-      "en": "Subscriber Counter"
-    },
-    "description": {
-      "nl": "Een live-updatende YouTube-abonnees en weergaveteller die automatisch de helderheid aanpast aan de omgeving.",
-      "en": "A live-updating YouTube subscriber and view counter that automatically adjusts its brightness to the surroundings."
-    },
-    "about": {
-      "nl": "Dit was de eerste YouTube-video die ik heb gemaakt. Later heb ik ook de kans gekregen om over dit project een artikel te schrijven in het Duitse blad Heise Online.\nDeze subscriber counter bestaat uit een ESP32 met een LCD-display en een LDR om de helderheid van het display aan te passen aan de omgeving. De gegevens van het YouTube-account haalt hij via Google Cloud API’s op om deze vervolgens weer te geven.\nDe behuizing is gemodelleerd in Fusion 360 en uitgeprint op een Elegoo Neptune 4 Plus 3D-printer.",
-      "en": "This was the first YouTube video I made. Later, I also had the opportunity to write an article about this project for the German publication Heise Online.\nThis subscriber counter consists of an ESP32 with an LCD display and an LDR to adjust the brightness of the display to its surroundings. It retrieves the data from the YouTube account via Google Cloud APIs and displays it.\nThe enclosure was modeled in Fusion 360 and printed on an Elegoo Neptune 4 Plus 3D printer."
-    },
-    "categorie": {
-      "nl": "Elektronica",
-      "en": "Electronics"
-    },
-    "status": {
-      "nl": "Afgerond",
-      "en": "Completed"
-    },
-    "aanpak": {
-      "nl": [
-        "Idee bedenken en uitwerken.",
-        "Onderdelen zoeken en samen testen.",
-        "Code schrijven in Arduino IDE.",
-        "3D model maken in Fusion 360.",
-        "Onderdelen uitprinten in PLA.",
-        "Elektronica en behuizing samenbouwen.",
-        "Bugs oplossen.",
-        "Video opnemen en editen."
-      ],
-      "en": [
-        "Coming up with and developing the idea.",
-        "Sourcing and testing components together.",
-        "Writing code in Arduino IDE.",
-        "Creating a 3D model in Fusion 360.",
-        "Printing parts in PLA.",
-        "Assembling everything.",
-        "Debugging and fixing issues.",
-        "Recording and editing the video."
-      ]
-    },
-    "tags": ["3D cad", "Electronics", "Arduino", "API", "Video"],
-    "links": {
-      "youtube": "https://youtu.be/LdAyR4mhC-g?si=eDd-XRKiIevdDmhS",
-      "Heise online": "https://www.heise.de/ratgeber/Bastelprojekt-mit-ESP32-Abonnentenzaehler-fuer-Youtube-bauen-9983037.html"
-    },
-    "year": "2024",
-    "thumb": "images/subscriber-counter-1.jpeg",
-    "images": [
-      "images/subscriber-counter-1.jpeg",
-      "images/subscriber-counter-2.jpeg",
-      "images/subscriber-counter-4.jpg",
-      "images/subscriber-counter-3.jpg"
-    ]
-  },
+
+  
 
   
   {
@@ -348,6 +291,67 @@
       "images/Game-Control-Panel-2.jpeg",
       "images/Game-Control-Panel-3.jpeg",
       "images/Game-Control-Panel-4.jpeg"
+    ]
+  },
+
+
+  {
+    "id": "Subscriber-Counter",
+    "file": "projects/template.html?id=Subscriber-Counter",
+    "title": {
+      "nl": "abonneeteller",
+      "en": "Subscriber Counter"
+    },
+    "description": {
+      "nl": "Een live-updatende YouTube-abonnees en weergaveteller die automatisch de helderheid aanpast aan de omgeving.",
+      "en": "A live-updating YouTube subscriber and view counter that automatically adjusts its brightness to the surroundings."
+    },
+    "about": {
+      "nl": "Dit was de eerste YouTube-video die ik heb gemaakt. Later heb ik ook de kans gekregen om over dit project een artikel te schrijven in het Duitse blad Heise Online.\nDeze subscriber counter bestaat uit een ESP32 met een LCD-display en een LDR om de helderheid van het display aan te passen aan de omgeving. De gegevens van het YouTube-account haalt hij via Google Cloud API’s op om deze vervolgens weer te geven.\nDe behuizing is gemodelleerd in Fusion 360 en uitgeprint op een Elegoo Neptune 4 Plus 3D-printer.",
+      "en": "This was the first YouTube video I made. Later, I also had the opportunity to write an article about this project for the German publication Heise Online.\nThis subscriber counter consists of an ESP32 with an LCD display and an LDR to adjust the brightness of the display to its surroundings. It retrieves the data from the YouTube account via Google Cloud APIs and displays it.\nThe enclosure was modeled in Fusion 360 and printed on an Elegoo Neptune 4 Plus 3D printer."
+    },
+    "categorie": {
+      "nl": "Elektronica",
+      "en": "Electronics"
+    },
+    "status": {
+      "nl": "Afgerond",
+      "en": "Completed"
+    },
+    "aanpak": {
+      "nl": [
+        "Idee bedenken en uitwerken.",
+        "Onderdelen zoeken en samen testen.",
+        "Code schrijven in Arduino IDE.",
+        "3D model maken in Fusion 360.",
+        "Onderdelen uitprinten in PLA.",
+        "Elektronica en behuizing samenbouwen.",
+        "Bugs oplossen.",
+        "Video opnemen en editen."
+      ],
+      "en": [
+        "Coming up with and developing the idea.",
+        "Sourcing and testing components together.",
+        "Writing code in Arduino IDE.",
+        "Creating a 3D model in Fusion 360.",
+        "Printing parts in PLA.",
+        "Assembling everything.",
+        "Debugging and fixing issues.",
+        "Recording and editing the video."
+      ]
+    },
+    "tags": ["3D cad", "Electronics", "Arduino", "API", "Video"],
+    "links": {
+      "youtube": "https://youtu.be/LdAyR4mhC-g?si=eDd-XRKiIevdDmhS",
+      "Heise online": "https://www.heise.de/ratgeber/Bastelprojekt-mit-ESP32-Abonnentenzaehler-fuer-Youtube-bauen-9983037.html"
+    },
+    "year": "2024",
+    "thumb": "images/subscriber-counter-1.jpeg",
+    "images": [
+      "images/subscriber-counter-1.jpeg",
+      "images/subscriber-counter-2.jpeg",
+      "images/subscriber-counter-4.jpg",
+      "images/subscriber-counter-3.jpg"
     ]
   }
 
