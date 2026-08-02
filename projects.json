@@ -13,7 +13,7 @@
     "about": {
       "nl": "Ik had een mooie oude koffiemachine gevonden in een kringloopwinkel en ben nu bezig om hem om te bouwen naar een omgevingsdata-collector. Er komt een plant in waar eerst de koffiepot stond, en de koffiemachine gaat hem water geven wanneer de plant het nodig heeft. Het plan is om op de plek waar eerst het oude display zat een TFT-display in te bouwen, waar hopelijk twee leuke ogen je informatie over de kamer geven. Door blij te kijken wanneer het aangenaam is, warm te kijken wanneer het heet is, enzovoort.",
       "en": "I found a nice old coffee machine at a thrift store and am now working on converting it into an environment data collector. A plant will go where the coffee pot used to be, and the coffee machine will water it when the plant needs it. The plan is to install a TFT display where the old display used to be, where hopefully two cute eyes will give you information about the room. Looking happy when it's pleasant, looking warm when it's hot, and so on."
-    }
+    },
     "categorie": {
       "nl": "Electronics",
       "en": "Electronics"
@@ -26,12 +26,12 @@
       "nl": [
         "Work in progress...",
         "Koffiemachine kopen.",
-        "Verzamel alle elektronische onderdelen.",
+        "Verzamel alle elektronische onderdelen."
       ],
       "en": [
         "Work in progress...",
         "Buying a coffee machine.",
-        "Get all the electronics parts.",
+        "Get all the electronics parts."
       ]
     },
     "tags": [
@@ -53,6 +53,14 @@
       "images/Plant_Coffee _Machine_7.MP4",
     ]
   },
+
+
+
+
+
+
+
+
   
   {
     "id": "School-Schedule",
