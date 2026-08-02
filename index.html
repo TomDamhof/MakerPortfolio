@@ -577,7 +577,7 @@
       const label = currentLang === 'nl' ? 'Meer zien' : 'Show more';
       const b = document.createElement('button');
       b.textContent = label;
-      b.setAttribute('style', base + 'color:rgba(255,255,255,.6);background:rgba(255,255,255,.15)');
+      b.setAttribute('style', base + 'color:rgba(255,255,255,.6);background:rgba(255,255,255,.02)');
       b.onmouseenter = () => { b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,.6)'; };
       b.onmouseleave = () => { b.style.color = 'rgba(255,255,255,.6)'; b.style.borderColor = 'rgba(255,255,255,.4)'; };
       b.onclick = () => showMore();
@@ -589,7 +589,7 @@
       const label = currentLang === 'nl' ? 'Minder zien' : 'Collapse';
       const b = document.createElement('button');
       b.textContent = label;
-      b.setAttribute('style', base + 'color:rgba(255,255,255,.6);background:rgba(255,255,255,.15)');
+      b.setAttribute('style', base + 'color:rgba(255,255,255,.6);background:rgba(255,255,255,.02)');
       b.onmouseenter = () => { b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,.6)'; };
       b.onmouseleave = () => { b.style.color = 'rgba(255,255,255,.6)'; b.style.borderColor = 'rgba(255,255,255,.4)'; };
       b.onclick = () => showLess();
