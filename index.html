@@ -577,9 +577,9 @@
       const label = currentLang === 'nl' ? 'Meer zien' : 'Show more';
       const b = document.createElement('button');
       b.textContent = label;
-      b.setAttribute('style', base + 'color:rgba(255,255,255,.4);');
-      b.onmouseenter = () => { b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,.4)'; };
-      b.onmouseleave = () => { b.style.color = 'rgba(255,255,255,.4)'; b.style.borderColor = 'rgba(255,255,255,.15)'; };
+      b.setAttribute('style', base + 'color:rgba(255,255,255,.6);');
+      b.onmouseenter = () => { b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,.6)'; };
+      b.onmouseleave = () => { b.style.color = 'rgba(255,255,255,.6)'; b.style.borderColor = 'rgba(255,255,255,.4)'; };
       b.onclick = () => showMore();
       addHover(b);
       wrap.appendChild(b);
