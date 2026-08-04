@@ -360,43 +360,40 @@
     }
   }
 
-  // Check voor ?tags= parameter in URL
-  const params = new URLSearchParams(window.location.search);
-  const tagParam = params.get('tags');
-  if (tagParam) {
-    const select = document.getElementById('filterSelect');
-    if (select) {
-      select.value = tagParam;
-      activeFilter = tagParam;
-      visibleCount = PAGE;
-    }
-  }
-  
+
+
   function buildFilterDropdown() {
     const tagSet = new Set();
+  
     allProjects.forEach(p => {
       const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
       tags.forEach(t => tagSet.add(t.trim()));
     });
+  
     const select = document.getElementById('filterSelect');
-    while (select.options.length > 1) select.remove(1);
+  
+    while (select.options.length > 1) {
+      select.remove(1);
+    }
+  
     [...tagSet].sort().forEach(tag => {
       const opt = document.createElement('option');
       opt.value = tag;
       opt.textContent = tag;
       select.appendChild(opt);
     });
+  
+    // Pas URL-filter toe nadat de opties bestaan
+    if (tagParam) {
+      select.value = tagParam;
+      activeFilter = tagParam;
+      visibleCount = PAGE;
+    }
+  
     addHover(select);
   }
 
-
-  // Check voor ?tags= parameter in URL
-  if (tagParam) {
-    setTimeout(() => {
-      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-    }, 300);
-  }
- 
+   
   // ── Filter change → reset and full rebuild ──────────────────
   function filterProjects() {
     activeFilter = document.getElementById('filterSelect').value;
@@ -405,6 +402,7 @@
   }
 
   
+  // Check voor ?tags= parameter in URL
   if (tagParam) {
     setTimeout(() => {
       document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
