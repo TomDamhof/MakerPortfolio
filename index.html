@@ -382,6 +382,10 @@
   const tagParam = params.get('tags');
   if (tagParam) {
     const select = document.getElementById('filterSelect');
+    allOption.textContent = tagParam;
+    allOption.setAttribute('data-nl', tagParam);
+    allOption.setAttribute('data-en', tagParam);
+    
     if (select) {
       select.value = tagParam;
       activeFilter = tagParam;
