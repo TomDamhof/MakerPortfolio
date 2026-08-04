@@ -533,7 +533,8 @@
     for (let i = 0; i < remainingSlots; i++) {
       const placeholder = document.createElement('div');
       placeholder.className = 'placeholder-card';
-      placeholder.style.cssText = 'background: #111110;padding: 2.4rem;';
+      placeholder.id = "projects";
+      placeholder.style.cssText = 'padding: 2.4rem;';
       placeholder.innerHTML = '';
       grid.appendChild(placeholder);
     }
