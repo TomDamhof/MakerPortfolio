@@ -386,9 +386,17 @@
   
     // URL parameter toepassen
     if (tagParam) {
-      select.value = tagParam;
-      activeFilter = tagParam;
-      visibleCount = PAGE;
+      const normalizedTag = decodeURIComponent(tagParam).trim();
+    
+      const option = [...select.options].find(
+        o => o.value.toLowerCase() === normalizedTag.toLowerCase()
+      );
+    
+      if (option) {
+        option.selected = true;
+        activeFilter = option.value;
+        visibleCount = PAGE;
+      }
     }
     
     addHover(select);
