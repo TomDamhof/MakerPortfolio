@@ -362,39 +362,41 @@
  
   function buildFilterDropdown() {
     const tagSet = new Set();
+  
     allProjects.forEach(p => {
       const tags = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
       tags.forEach(t => tagSet.add(t.trim()));
     });
+  
     const select = document.getElementById('filterSelect');
-    while (select.options.length > 1) select.remove(1);
+  
+    while (select.options.length > 1) {
+      select.remove(1);
+    }
+  
     [...tagSet].sort().forEach(tag => {
       const opt = document.createElement('option');
       opt.value = tag;
       opt.textContent = tag;
       select.appendChild(opt);
     });
-    addHover(select);
-  }
-
-  // Check voor ?tags= parameter in URL
-  const params = new URLSearchParams(window.location.search);
-  const tagParam = params.get('tags');
-  if (tagParam) {
-    const select = document.getElementById('filterSelect');
-    const allOption = select.querySelector('option[value=""]');
-
-    if (allOption) {
-      allOption.textContent = tagParam;
-      allOption.setAttribute('data-nl', tagParam);
-      allOption.setAttribute('data-en', tagParam);
-    }
-    
-    if (select) {
+  
+    // URL parameter toepassen
+    if (tagParam) {
       select.value = tagParam;
+  
+      const allOption = select.querySelector('option[value=""]');
+      if (allOption) {
+        allOption.textContent = tagParam;
+        allOption.setAttribute('data-nl', tagParam);
+        allOption.setAttribute('data-en', tagParam);
+      }
+  
       activeFilter = tagParam;
       visibleCount = PAGE;
     }
+  
+    addHover(select);
   }
 
   if (tagParam) {
