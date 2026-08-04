@@ -367,6 +367,8 @@ MakerWorld <span class="social-handle">@TooMuchESP</span>
       grid.innerHTML = '<div class="projects-loading">Voeg projecten toe aan projects.json om ze hier te zien.</div>';
     }
   }
+  const params = new URLSearchParams(window.location.search);
+  const tagParam = params.get('tags');
   function buildFilterDropdown() {
     const tagSet = new Set();
     allProjects.forEach(p => {
@@ -381,19 +383,22 @@ MakerWorld <span class="social-handle">@TooMuchESP</span>
       opt.textContent = tag;
       select.appendChild(opt);
     });
+    if (tagParam) {
+      const normalizedTag = decodeURIComponent(tagParam).trim();
+    
+      const option = [...select.options].find(
+        o => o.value.toLowerCase() === normalizedTag.toLowerCase()
+      );
+    
+      if (option) {
+        option.selected = true;
+        activeFilter = option.value;
+        visibleCount = PAGE;
+      }
+    }
     addHover(select);
   }
-  // Check voor ?tags= parameter in URL
-  const params = new URLSearchParams(window.location.search);
-  const tagParam = params.get('tags');
-  if (tagParam) {
-    const select = document.getElementById('filterSelect');
-    if (select) {
-      select.value = tagParam;
-      activeFilter = tagParam;
-      visibleCount = PAGE;
-    }
-  }
+
   if (tagParam) {
     setTimeout(() => {
       document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
