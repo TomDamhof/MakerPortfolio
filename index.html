@@ -359,9 +359,7 @@
       grid.innerHTML = '<div class="projects-loading">Voeg projecten toe aan projects.json om ze hier te zien.</div>';
     }
   }
-
-
-
+ 
   function buildFilterDropdown() {
     const tagSet = new Set();
     allProjects.forEach(p => {
@@ -378,22 +376,23 @@
     });
     addHover(select);
   }
-  
+
   // Check voor ?tags= parameter in URL
   const params = new URLSearchParams(window.location.search);
   const tagParam = params.get('tags');
   if (tagParam) {
     const select = document.getElementById('filterSelect');
-    
-    allOption.textContent = tagParam;
-    allOption.setAttribute('data-nl', tagParam);
-    allOption.setAttribute('data-en', tagParam);
-    
     if (select) {
       select.value = tagParam;
       activeFilter = tagParam;
       visibleCount = PAGE;
     }
+  }
+
+  if (tagParam) {
+    setTimeout(() => {
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
   }
   
    
