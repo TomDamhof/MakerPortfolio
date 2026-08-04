@@ -359,7 +359,10 @@
       grid.innerHTML = '<div class="projects-loading">Voeg projecten toe aan projects.json om ze hier te zien.</div>';
     }
   }
- 
+
+  const params = new URLSearchParams(window.location.search);
+  const tagParam = params.get('tags');
+  
   function buildFilterDropdown() {
     const tagSet = new Set();
   
@@ -384,18 +387,10 @@
     // URL parameter toepassen
     if (tagParam) {
       select.value = tagParam;
-  
-      const allOption = select.querySelector('option[value=""]');
-      if (allOption) {
-        allOption.textContent = tagParam;
-        allOption.setAttribute('data-nl', tagParam);
-        allOption.setAttribute('data-en', tagParam);
-      }
-  
       activeFilter = tagParam;
       visibleCount = PAGE;
     }
-  
+    
     addHover(select);
   }
 
